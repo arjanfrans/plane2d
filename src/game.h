@@ -1,0 +1,7 @@
+
+namespace game {
+
+
+}
+
+int main();
