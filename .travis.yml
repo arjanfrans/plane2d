@@ -4,6 +4,9 @@ compiler:
     - clang
     - gcc
 
+before_install:
+    - sudo apt-get update
+
 install:
     - sudo apt-get install -qq freeglut3 freeglut3-dev binutils-gold
 
