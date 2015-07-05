@@ -1,18 +1,29 @@
+
+#include "engine/engine.h"
 #include "game.h"
-#include "stdio.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "GL/gl.h"
 
+
 namespace game {
 
-}
+    Game::Game()
+    {}
 
-int main(int argc, char *argv[]) {
-    SDL_Init(SDL_INIT_HAPTIC);
-    SDL_Quit();
-    printf("test");
-    return 0;
-}
+    int Game::init() {
+        // engine.init();
+    }
 
+    void Game::loop() {
+        // engine.render();
+    }
+
+    int run() {
+        Game game;
+        game.init();
+        game.loop();
+        return 0;
+    }
+}
 
