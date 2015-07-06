@@ -10,18 +10,18 @@ namespace game {
 namespace engine {
 
     Engine::Engine() 
-    : renderer()
+    : renderer_()
     {}
 
     
 
     bool Engine::init() {
-        return true; 
+        return renderer_.init();
     }
 
 
     void Engine::render() {
-
+        renderer_.render();
     }
 }
 }

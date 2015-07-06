@@ -13,7 +13,7 @@ namespace engine {
             void render();
             bool init();
         private:
-            Renderer renderer;
+            Renderer renderer_;
     };
 }
 }
