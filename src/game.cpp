@@ -12,11 +12,11 @@ namespace game {
     Game::Game()
     {}
 
-    int Game::init() {
+    bool Game::init() {
         if(SDL_Init(SDL_INIT_VIDEO) < 0) {
             printf("SDL_Error: %s\n", SDL_GetError());
         }
-        engine.init();
+        return engine.init();
     }
 
     void Game::loop() {
@@ -25,11 +25,14 @@ namespace game {
 
     int run() {
         Game game;
-        game.init();
-        game.loop();
-
+        if(game.init()) {
+            game.loop();
+            SDL_Quit();
+            return 0;
+        }
+        printf("Something went wrong");
         SDL_Quit();
-        return 0;
+        return 1;
     }
 }
 

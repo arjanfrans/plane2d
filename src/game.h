@@ -8,7 +8,7 @@ namespace game {
     class Game {
         public:
             Game();
-            int init();
+            bool init();
             void loop();
         private:
             engine::Engine engine;
