@@ -1,27 +1,24 @@
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
 #include "GL/gl.h"
 
-
 #include "renderer.h"
+#include "window.h"
 #include "engine.h"
 
 namespace game {
 namespace engine {
 
     Engine::Engine() 
-    : renderer_()
+    : window_(), renderer_()
     {}
 
     
 
     bool Engine::init() {
-        return renderer_.init();
+        return window_.init();
     }
 
 
     void Engine::render() {
-        renderer_.render();
     }
 }
 }

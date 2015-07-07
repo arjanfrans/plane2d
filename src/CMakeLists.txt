@@ -9,6 +9,8 @@ find_package(SDL2_image REQUIRED)
 add_executable(${PROJECT_NAME} 
     main.cpp
     game.cpp
+    engine/window.cpp
+    engine/texture.cpp
     engine/engine.cpp
     engine/renderer.cpp
 )
