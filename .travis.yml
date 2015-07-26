@@ -23,17 +23,17 @@ addons:
             - libopenal-dev
             - libflac-dev
             - libvorbis-dev
-            # sfml
-            - libsfml-dev
-            - libsfml-audio2
-            - libsfml-network2
-            - libsfml-graphics2
-            - libsfml-system2
-            - libsfml-window2
             # cmake
             - cmake
 before_script:
     - cmake .
+
+install:
+    - mkdir -p lib/SFML && cd lib/SFML 
+    - wget https://github.com/SFML/SFML/archive/2.3.1.tar.gz
+    - tar -xzvf 2.3.1.tar.gz
+    - cd SFML-2.3.1 && cmake .
+    - make install
 
 script:
     - make
