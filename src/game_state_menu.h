@@ -11,9 +11,10 @@ class GameStateMenu : public GameState {
 	
 	private:
 		sf::View view;
+		void loadgame();
 
 	public:
-		GameStateMenu(std::unique_ptr<Game> game);
+		GameStateMenu(std::shared_ptr<Game> game);
 
 		virtual void draw(const float dt);
 		virtual void update(const float dt);

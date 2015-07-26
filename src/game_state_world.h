@@ -12,7 +12,7 @@ class GameStateWorld : public GameState {
 		sf::View guiView;
 
 	public:
-		GameStateWorld(std::unique_ptr<Game> gane);
+		GameStateWorld(std::shared_ptr<Game> gane);
 
 		virtual void draw(const float dt);
 		virtual void update(const float dt);

@@ -6,14 +6,21 @@
 
 #include "game.h"
 #include "game_state.h"
+#include "texture_manager.h"
 
 Game::Game() 
 {
+	this->loadTextures();
 	this->window.create(sf::VideoMode(800, 600), "Brecourt");
 	this->window.setFramerateLimit(60);
+	this->background.setTexture(this->textureManager.getReference("background"));
 }
 
-void Game::pushState(std::unique_ptr<GameState> state) {
+void Game::loadTextures() {
+	textureManager.loadTexture("background", "data/sprites/background.png");
+}
+
+void Game::pushState(std::shared_ptr<GameState> state) {
 	this->states.push(state);
 	return;
 }
@@ -23,7 +30,7 @@ void Game::popState() {
 	return;
 }
 
-void Game::changeState(std::unique_ptr<GameState> state) {
+void Game::changeState(std::shared_ptr<GameState> state) {
 	if(!this->states.empty()) {
 		popState();
 	}
@@ -31,7 +38,7 @@ void Game::changeState(std::unique_ptr<GameState> state) {
 	return;
 }
 
-std::unique_ptr<GameState> Game::peekState() {
+std::shared_ptr<GameState> Game::peekState() {
 	if(this->states.empty()) {
 		return nullptr;
 	}

@@ -4,11 +4,11 @@
 #include "game_state_menu.h"
 
 int main() {
-	Game game;
-	std::unique_ptr<GameStateMenu> menu{new GameStateMenu(std::make_unique<GameStateMenu>{game}};
-	game.pushState(menu);
-	game.gameLoop();
+	std::shared_ptr<Game> game{new Game};
+	std::shared_ptr<GameStateMenu> menu{new GameStateMenu{game}};
+	game.get()->pushState(menu);
+	game.get()->gameLoop();
     return 0;
-}
+};
 
 
