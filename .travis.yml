@@ -8,9 +8,29 @@ compiler:
 addons:
     apt:
         packages:
-            - cmake
+            # sfml-window
+            - libx11-dev
+            - libxcb1-dev
+            - libx11-xbc-dev
+            - libxcb-randr0-dev
+            - libxcb-image0-dev
+            - libgl1-mesa-dev
+            - libudev-dev
+            # sfml-graphics
+            - libfreetype6-dev
+            - libjpeg-dev
+            # sfml-audio
+            - libopenal-dev
+            - libflac-dev
+            - libvorbis-dev
+            # sfml
             - libsfml-dev
-
+            - libsfml-audio2
+            - libsfml-graphics2
+            - libsfml-system2
+            - libsfml-window2
+            # cmake
+            - cmake
 before_script:
     - cmake .
 
