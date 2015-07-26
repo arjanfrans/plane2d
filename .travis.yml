@@ -1,15 +1,15 @@
+sudo: false
 language: cpp
 
 compiler:
     - clang
     - gcc
 
-before_install:
-    - sudo apt-get update -qq
-
-install:
-    - sudo apt-get install -qq libsfml-dev
-    - sudo apt-get install -qq freeglut3 freeglut3-dev binutils-gold
+addons:
+    apt:
+        packages:
+            - cmake
+            - libsfml-dev
 
 before_script:
     - cmake .
