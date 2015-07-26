@@ -14,7 +14,6 @@ class Game {
 
 	public:
 		Game();
-		~Game();
 
 		sf::Sprite background;
 		std::stack<std::shared_ptr<GameState>> states;

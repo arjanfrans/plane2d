@@ -6,9 +6,10 @@ find_package(SFML REQUIRED system window graphics network audio)
 
 # add_executable(${PROJECT_NAME} ${project_SRC})
 add_executable(${PROJECT_NAME} 
-    game.cpp
-	game_state_menu.cpp
+	texture_manager.cpp
 	game_state_world.cpp
+	game_state_menu.cpp
+    game.cpp
     main.cpp
 )
 
@@ -25,4 +26,3 @@ target_link_libraries(
     ${OPENGL_LIBRARY}
 	${SFML_LIBRARIES}
 )
-

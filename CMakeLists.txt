@@ -13,6 +13,14 @@ else()
         message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
+# DEBUG
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
 # include_directories("include")
 
 add_subdirectory(src)
+
+# Copy assets
+add_custom_target(copy-runtime-files ALL
+	COMMAND cmake -E copy_directory ${CMAKE_SOURCE_DIR}/data ${CMAKE_BINARY_DIR}/data
+DEPENDS ${MY_TARGET})

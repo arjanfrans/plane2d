@@ -4,9 +4,9 @@
 #include <SFML/System.hpp>
 
 
+#include "texture_manager.h"
 #include "game.h"
 #include "game_state.h"
-#include "texture_manager.h"
 
 Game::Game() 
 {
@@ -17,7 +17,7 @@ Game::Game()
 }
 
 void Game::loadTextures() {
-	textureManager.loadTexture("background", "data/sprites/background.png");
+	this->textureManager.loadTexture("background", "data/graphics/background.png");
 }
 
 void Game::pushState(std::shared_ptr<GameState> state) {
@@ -42,7 +42,7 @@ std::shared_ptr<GameState> Game::peekState() {
 	if(this->states.empty()) {
 		return nullptr;
 	}
-	return move(this->states.top());
+	return this->states.top();
 }
 
 void Game::gameLoop() {
