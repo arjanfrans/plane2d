@@ -26,6 +26,7 @@ addons:
             # sfml
             - libsfml-dev
             - libsfml-audio2
+            - libsfml-network2
             - libsfml-graphics2
             - libsfml-system2
             - libsfml-window2
@@ -37,3 +38,5 @@ before_script:
 script:
     - make
 
+cache:
+    - apt

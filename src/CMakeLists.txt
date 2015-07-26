@@ -1,8 +1,6 @@
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/CMake")
-
 
 find_package(OpenGL REQUIRED)
-find_package(SFML REQUIRED system window graphics network audio)
+find_package(SFML 2 REQUIRED network graphics window audio system)
 
 # add_executable(${PROJECT_NAME} ${project_SRC})
 add_executable(${PROJECT_NAME} 
@@ -22,7 +20,6 @@ include_directories(
 # link the executable to those libraries
 target_link_libraries(
     ${PROJECT_NAME}
-    m
     ${OPENGL_LIBRARY}
 	${SFML_LIBRARIES}
 )
