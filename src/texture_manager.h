@@ -10,12 +10,12 @@
 class TextureManager {
 
 	private:
-		std::map<std::string, sf::Texture> textures;
+		std::map<std::string, std::shared_ptr<sf::Texture>> textures;
 
 	public:
 		TextureManager();
 		void loadTexture(const std::string& name, const std::string& filename);
-		sf::Texture& getReference(const std::string& texture);
+		std::shared_ptr<sf::Texture> getReference(const std::string& texture);
 };
 
 #endif

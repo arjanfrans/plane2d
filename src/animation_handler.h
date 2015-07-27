@@ -9,14 +9,14 @@
 class AnimationHandler {
 
 	private:
-		std::vector<std::unique_ptr<Animation>> animations;
+		std::vector<std::shared_ptr<Animation>> animations;
 		float time;
 		int currentAnimation;
 
 	public:
 		AnimationHandler();
 
-		void addAnimation(std::unique_ptr<Animation> animation);
+		void addAnimation(std::shared_ptr<Animation> animation);
 		void update(const float dt);
 		void changeAnimation(int animationIndex);
 		Animation* getCurrentAnimation();

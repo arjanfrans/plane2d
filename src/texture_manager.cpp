@@ -10,15 +10,15 @@ TextureManager::TextureManager() {
 }
 
 void TextureManager::loadTexture(const std::string& name, const std::string& filename) {
-	sf::Texture texture;
-	texture.loadFromFile(filename);
+	auto texture = std::make_shared<sf::Texture>();
+	texture->loadFromFile(filename);
 
-	this->textures[name] = texture;
+	this->textures.emplace(name, texture);
 	return;
 
 }
 
-sf::Texture& TextureManager::getReference(const std::string& texture)
+std::shared_ptr<sf::Texture> TextureManager::getReference(const std::string& texture)
 {
-	return this->textures.at(texture);
+	return textures.at(texture);
 }

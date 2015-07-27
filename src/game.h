@@ -2,8 +2,10 @@
 #define GAME_H_
 
 #include "SFML/Graphics.hpp"
-#include "stack"
-#include "memory"
+#include <map>
+#include <stack>
+#include <memory>
+#include "tile.h"
 #include "texture_manager.h"
 
 class GameState;
@@ -11,9 +13,13 @@ class GameState;
 class Game {
 	private:
 		void loadTextures();
+		void loadTiles();
 
 	public:
 		Game();
+
+		const static int tileSize = 8;
+		std::map<std::string, Tile> tileAtlas;
 
 		sf::Sprite background;
 		std::stack<std::shared_ptr<GameState>> states;

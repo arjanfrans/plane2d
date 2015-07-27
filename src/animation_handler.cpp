@@ -11,8 +11,8 @@ Animation* AnimationHandler::getCurrentAnimation() {
 	return animations[currentAnimation].get();
 }
 
-void AnimationHandler::addAnimation(std::unique_ptr<Animation> animation) {
-	animations.push_back(std::move(animation));
+void AnimationHandler::addAnimation(std::shared_ptr<Animation> animation) {
+	animations.push_back(animation);
 }
 
 void AnimationHandler::update(const float dt) {
