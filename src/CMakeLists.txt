@@ -6,6 +6,7 @@ find_package(SFML 2 REQUIRED network graphics window audio system)
 add_executable(${PROJECT_NAME} 
 	texture_manager.cpp
 	tile.cpp
+	map.cpp
 	animation.cpp
 	animation_handler.cpp
 	game_state_world.cpp

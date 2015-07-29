@@ -14,9 +14,11 @@
 Game::Game() 
 {
 	loadTextures();
+
 	loadTiles();
-	window.create(sf::VideoMode(800, 600), "Brecourt");
-	window.setFramerateLimit(60);
+    window = std::shared_ptr<sf::RenderWindow>{new sf::RenderWindow()};
+	window->create(sf::VideoMode(800, 600), "Brecourt");
+	window->setFramerateLimit(60);
 	background.setTexture(*textureManager.getReference("background"));
 }
 
@@ -26,6 +28,7 @@ void Game::loadTextures() {
 	textureManager.loadTexture("water", "data/graphics/water.png");
 	textureManager.loadTexture("residential", "data/graphics/residential.png");
 	textureManager.loadTexture("commercial", "data/graphics/commercial.png");
+
 	textureManager.loadTexture("industrial", "data/graphics/industrial.png");
 	textureManager.loadTexture("road", "data/graphics/road.png");
 
@@ -60,16 +63,16 @@ std::shared_ptr<GameState> Game::peekState() {
 void Game::gameLoop() {
 	sf::Clock clock;
 
-	while(this->window.isOpen()) {
+	while(this->window->isOpen()) {
 		sf::Time elapsed = clock.restart();
 		float dt = elapsed.asSeconds();
 
 		if(peekState() != nullptr) {
 			peekState()->handleInput();
 			peekState()->update(dt);
-			this->window.clear(sf::Color::Black);
+			this->window->clear(sf::Color::Black);
 			peekState()->draw(dt);
-			this->window.display();
+			this->window->display();
 		}
 	}
 }

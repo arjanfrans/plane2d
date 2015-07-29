@@ -20,7 +20,7 @@ enum class TileType {
 };
 
 class Tile {
-	
+
 	public:
 		Tile();
 		Tile(const int size, int height, std::shared_ptr<sf::Texture> texture,
@@ -32,8 +32,8 @@ class Tile {
 		TileType type;
 		int variant;
 		int regions[1];
-
 		int cost;
+
 		double population;
 		int maxPopulationPerLevel;
 		int maxLevels;
