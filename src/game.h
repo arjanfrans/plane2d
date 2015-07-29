@@ -11,28 +11,29 @@
 class GameState;
 
 class Game {
-	private:
-		void loadTextures();
-		void loadTiles();
+private:
+    void loadTextures();
+    void loadTiles();
 
-	public:
-		Game();
+public:
+    Game();
 
-		const static int tileSize = 8;
-		std::map<std::string, Tile> tileAtlas;
+    const static int tileSize = 8;
+    std::map<std::string, Tile> tileAtlas;
 
-		sf::Sprite background;
-		std::stack<std::shared_ptr<GameState>> states;
-		sf::RenderWindow window;
-		TextureManager textureManager;
+    sf::Sprite background;
+    std::stack<std::shared_ptr<GameState> > states;
+    std::shared_ptr<sf::RenderWindow> window = nullptr;
+    TextureManager textureManager;
 
-		void pushState(std::shared_ptr<GameState> state);
-		void popState();
-		void changeState(std::shared_ptr<GameState> state);
-		std::shared_ptr<GameState> peekState();
+    void pushState(std::shared_ptr<GameState> state);
+    void popState();
+    void changeState(std::shared_ptr<GameState> state);
+    std::shared_ptr<GameState> peekState();
 
-		void gameLoop();
 
+
+    void gameLoop();
 };
 
 #endif

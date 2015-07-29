@@ -16,6 +16,9 @@ bin
 *.dylib
 *.dll
 
+# IntelliJ
+idea
+
 # Fortran module files
 *.mod
 
