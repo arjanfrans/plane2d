@@ -14,7 +14,7 @@ GameStateWorld::GameStateWorld(std::shared_ptr<Game> game) {
 	this->guiView.setCenter(position);
 	this->gameView.setCenter(position);
 
-    Map map("city_map.dat", 64, 64, game->tileAtlas);
+    map = Map("data/maps/city_map.dat", 64, 64, game->tileAtlas);
     zoomLevel = 1.0f;
 
     sf::Vector2f center(map.width, map.height * 0.5);
@@ -26,6 +26,7 @@ GameStateWorld::GameStateWorld(std::shared_ptr<Game> game) {
 
 void GameStateWorld::draw(const float dt) {
 	this->game->window->clear(sf::Color::Black);
+
     this->game->window->setView(guiView);
 	this->game->window->draw(this->game->background);
 
@@ -50,6 +51,7 @@ void GameStateWorld::handleInput() {
 			case sf::Event::Resized: {
 				this->gameView.setSize(event.size.width, event.size.height);
 				this->guiView.setSize(event.size.width, event.size.height);
+                gameView.zoom(zoomLevel);
 				auto backgroundPosition = this->game->window->mapPixelToCoords(sf::Vector2i(0, 0), this->guiView);
 				this->game->background.setPosition(backgroundPosition);
 				auto scaleX = float(event.size.width) / float(this->game->background.getTexture()->getSize().x);
@@ -57,6 +59,39 @@ void GameStateWorld::handleInput() {
 				this->game->background.setScale(scaleX, scaleY);
 				break;
 			}
+            case sf::Event::MouseMoved: {
+                if(actionState == ActionState::PANNING) {
+                    sf::Vector2f position = sf::Vector2f(sf::Mouse::getPosition(*game->window) - panningAnchor);
+                    gameView.move(-1.0f * position * zoomLevel);
+                    panningAnchor = sf::Mouse::getPosition(*game->window);
+                }
+                break;
+            }
+            case sf::Event::MouseButtonPressed: {
+                if(event.mouseButton.button == sf::Mouse::Middle) {
+                    if(actionState != ActionState::PANNING) {
+                        actionState = ActionState::PANNING;
+                        panningAnchor = sf::Mouse::getPosition(*game->window);
+                    }
+                }
+                break;
+            }
+            case sf::Event::MouseButtonReleased: {
+                if(event.mouseButton.button == sf::Mouse::Middle) {
+                    actionState = ActionState::NONE;
+                }
+                break;
+            }
+            case sf::Event::MouseWheelMoved: {
+                if(event.mouseWheel.delta < 0) {
+                    gameView.zoom(2.0f);
+                    zoomLevel = zoomLevel * 2.0f;
+                } else {
+                    gameView.zoom(0.5f);
+                    zoomLevel = zoomLevel * 0.5f;
+                }
+                break;
+            }
 			default:
 				break;
 		}

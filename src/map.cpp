@@ -4,6 +4,7 @@
 #include "map.h"
 #include "tile.h"
 #include <fstream>
+#include <iostream>
 
 Map::Map()
     : width{ 0 }
@@ -19,8 +20,8 @@ Map::Map(const std::string& filename, int width, int height, std::map<std::strin
     load(filename, width, height, tileAtlas);
 }
 
-void Map::load(const std::string& filename, int width, int height, std::map<std::string,
-                                                                       Tile>& tileAtlas)
+void Map::load(const std::string& filename, int width, int height, 
+        std::map<std::string, Tile>& tileAtlas)
 {
     std::ifstream inputFile;
     inputFile.open(filename, std::ios::in | std::ios::binary);
