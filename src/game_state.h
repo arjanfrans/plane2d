@@ -1,17 +1,19 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
+#include <memory>
+#include <vector>
+
 #include "game.h"
-#include "memory"
+#include "input/input.h"
 
 class GameState {
-	public:
-		std::shared_ptr<Game> game;
+    public:
+        std::shared_ptr<Game> game;
+        virtual void update(const float dt) = 0;
 
-		virtual void draw(const float dt) = 0;
-		virtual void update(const float dt) = 0;
-		virtual void handleInput() = 0;
-
+    private:
+        std::vector<input::Input> inputs;
 };
 
 #endif

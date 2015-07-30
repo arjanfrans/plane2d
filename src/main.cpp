@@ -1,15 +1,25 @@
-#include "memory"
+#include <iostream>
+
+#ifndef DEBUG
+#define DEBUG
+#endif
+
+#ifdef DEBUG
+#define D(x) std::cout << x;
+#else
+#define D(x)
+#endif
 
 #include "game.h"
+#include "game_state.h"
 #include "game_state_menu.h"
-#include "game_state_world.h"
 
 int main() {
-	std::shared_ptr<Game> game{new Game};
-	std::shared_ptr<GameStateWorld> menu{new GameStateWorld{game}};
-	game->pushState(menu);
-	game->gameLoop();
+    D("Program start");
+    auto game = std::make_shared<Game>();
+    auto menuState = std::make_shared<GameStateMenu>(game);
+    game->pushState(menuState);
+    game->init(); 
+    game->loop();
     return 0;
-};
-
-
+}

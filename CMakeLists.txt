@@ -14,7 +14,7 @@ else()
 endif()
 
 # DEBUG
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Wextra")
 
 # include_directories("include")
 
