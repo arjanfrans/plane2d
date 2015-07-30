@@ -79,40 +79,40 @@ void Game::gameLoop() {
 
 void Game::loadTiles() {
 	auto staticAnim = std::make_shared<Animation>(0, 0, 1.0f);
-	tileAtlas["grass"] =
+	tileAtlas["grass"] = std::make_shared<Tile>(
         Tile(tileSize, 1, textureManager.getReference("grass"),
             { staticAnim },
-            TileType::GRASS, 50, 0, 1);
-    tileAtlas["forest"] =
+            TileType::GRASS, 50, 0, 1));
+    tileAtlas["forest"] = std::make_shared<Tile>(
         Tile(tileSize, 1, textureManager.getReference("forest"),
             { staticAnim },
-            TileType::FOREST, 100, 0, 1);   
-    tileAtlas["water"] =
+            TileType::FOREST, 100, 0, 1));   
+    tileAtlas["water"] = std::make_shared<Tile>(
         Tile(tileSize, 1, textureManager.getReference("water"),
             { std::make_shared<Animation>(0, 3, 0.5f),
             std::make_shared<Animation>(0, 3, 0.5f),
             std::make_shared<Animation>(0, 3, 0.5f) },
-            TileType::WATER, 0, 0, 1);
-    tileAtlas["residential"] =
+            TileType::WATER, 0, 0, 1));
+    tileAtlas["residential"] = std::make_shared<Tile>(
         Tile(tileSize, 2, textureManager.getReference("residential"),
             { staticAnim, staticAnim, staticAnim,
             staticAnim, staticAnim, staticAnim },
-            TileType::RESIDENTIAL, 300, 50, 6);
-    tileAtlas["commercial"] =
+            TileType::RESIDENTIAL, 300, 50, 6));
+    tileAtlas["commercial"] = std::make_shared<Tile>(
         Tile(tileSize, 2, textureManager.getReference("commercial"),
             { staticAnim, staticAnim, staticAnim, staticAnim},
-            TileType::COMMERCIAL, 300, 50, 4);
-    tileAtlas["industrial"] =
+            TileType::COMMERCIAL, 300, 50, 4));
+    tileAtlas["industrial"] = std::make_shared<Tile>(
         Tile(tileSize, 2, textureManager.getReference("industrial"),
             { staticAnim, staticAnim, staticAnim,
             staticAnim },
-            TileType::INDUSTRIAL, 300, 50, 4);
-    tileAtlas["road"] =
+            TileType::INDUSTRIAL, 300, 50, 4));
+    tileAtlas["road"] = std::make_shared<Tile>(
         Tile(tileSize, 1, textureManager.getReference("road"),
             { staticAnim, staticAnim, staticAnim,
             staticAnim, staticAnim, staticAnim,
             staticAnim, staticAnim, staticAnim,
             staticAnim, staticAnim },
-            TileType::ROAD, 100, 0, 1);
+            TileType::ROAD, 100, 0, 1));
     return;
 }

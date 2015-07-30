@@ -19,7 +19,7 @@ public:
     Game();
 
     const static int tileSize = 8;
-    std::map<std::string, Tile> tileAtlas;
+    std::map<std::string, std::shared_ptr<Tile>> tileAtlas;
 
     sf::Sprite background;
     std::stack<std::shared_ptr<GameState> > states;

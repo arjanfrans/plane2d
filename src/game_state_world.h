@@ -8,7 +8,8 @@
 
 enum class ActionState {
     NONE,
-    PANNING
+    PANNING,
+    SELECTING
 };
 
 class GameStateWorld : public GameState {
@@ -22,6 +23,11 @@ class GameStateWorld : public GameState {
         Map map;
         sf::Vector2i panningAnchor;
         float zoomLevel;
+
+        sf::Vector2i selectionStart;
+        sf::Vector2i selectionEnd;
+
+        std::shared_ptr<Tile> currentTile = nullptr;
 
 	public:
 		GameStateWorld(std::shared_ptr<Game> gane);

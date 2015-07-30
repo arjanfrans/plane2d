@@ -15,18 +15,22 @@ class Map {
 
 	public:
 		Map();
-		Map(const std::string& filename, int width, int height, std::map<std::string, Tile>& tileAtlas);
+		Map(const std::string& filename, int width, int height, std::map<std::string, std::shared_ptr<Tile>>& tileAtlas);
 
 		int width;
 		int height;
-		std::vector<Tile> tiles;
+		std::vector<std::shared_ptr<Tile>> tiles;
 		std::vector<int> resources;
 		int tileSize;
-		int selectedTiles;
+        std::vector<char> selected;
+		int selectedCount;
 		int regions[1];
 
+		void select(sf::Vector2i start, sf::Vector2i end, std::vector<TileType> blacklist);
+		void clearSelected();
+
 		void load(const std::string& filename, int width, int height, std::map<std::string,
-				Tile>& tileAtlas);
+				std::shared_ptr<Tile>>& tileAtlas);
 
 		void save(const std::string& filename);
 
