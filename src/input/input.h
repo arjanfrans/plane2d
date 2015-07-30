@@ -10,9 +10,7 @@ namespace input {
 class Input {
 
     public:
-        virtual void update() = 0;
-
-    private:
+        virtual void update(const float dt) = 0;
         std::shared_ptr<GameState> state; 
 
 };

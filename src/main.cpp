@@ -10,9 +10,9 @@
 #define D(x)
 #endif
 
-#include "game.h"
 #include "game_state.h"
 #include "game_state_menu.h"
+#include "game.h"
 
 int main() {
     D("Program start");

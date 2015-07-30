@@ -5,15 +5,16 @@
 #include <vector>
 
 #include "game.h"
+
+namespace input { class Input; }
 #include "input/input.h"
 
 class GameState {
+
     public:
         std::shared_ptr<Game> game;
         virtual void update(const float dt) = 0;
-
-    private:
-        std::vector<input::Input> inputs;
+        std::vector<std::unique_ptr<input::Input>> inputs;
 };
 
 #endif
