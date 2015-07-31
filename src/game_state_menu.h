@@ -29,9 +29,9 @@ class GameStateMenu : public GameState {
         void moveUp();
         void moveDown();
         void selectItem(int index);
+        int selectedItemIndex;
 
     private:
-        int selectedItemIndex;
         std::vector<input::MenuInput> inputs;
         std::vector<view::MenuView> views;
         void updateInputs();

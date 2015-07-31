@@ -12,8 +12,11 @@ class MenuView {
 
     public:
         MenuView(std::shared_ptr<GameStateMenu> state);
-        std::shared_ptr<GameStateMenu> state = nullptr;
+        std::shared_ptr<GameStateMenu> state;
         void draw();
+
+    private:
+        sf::Font font;
 };
 
 }
