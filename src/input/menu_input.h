@@ -18,6 +18,7 @@ class MenuInput {
         void update(sf::Event event);
 
     private:
+        void keyInput(sf::Event);
         void closeWindow(sf::Event event);
 
 };

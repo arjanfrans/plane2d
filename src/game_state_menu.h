@@ -3,11 +3,20 @@
 
 #include <memory>
 #include <vector>
+#include <map>
 
 #include "game.h"
 #include "game_state.h"
+
 namespace input { class MenuInput; }
+namespace view { class MenuView; }
 #include "input/menu_input.h"
+#include "view/menu_view.h"
+
+enum MenuItem {
+    START,
+    EXIT
+};
 
 class GameStateMenu : public GameState {
 
@@ -15,11 +24,17 @@ class GameStateMenu : public GameState {
         GameStateMenu(std::shared_ptr<Game> game);
         void update(const float dt);
         void setInputs(std::vector<input::MenuInput> inputs);
+        void setViews(std::vector<view::MenuView> view);
+        std::map<int, std::string> items;
+        void moveUp();
+        void moveDown();
+        void selectItem(int index);
 
     private:
+        int selectedItemIndex;
         std::vector<input::MenuInput> inputs;
+        std::vector<view::MenuView> views;
         void updateInputs();
-
 };
 
 #endif

@@ -6,12 +6,15 @@
 #include "game.h"
 #include "game_state.h"
 
+#include "utils/logger.h"
+
 Game::Game() {
     this->window.create(sf::VideoMode(800, 600), "Brecourt");
     this->window.setFramerateLimit(60);
 }
 
 void Game::loop() {
+    LOG(INFO) << "Start game loop.";
     sf::Clock clock;
 
     while(this->window.isOpen()) {
