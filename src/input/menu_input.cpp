@@ -23,7 +23,7 @@ void MenuInput::update(sf::Event event) {
 }
 
 void MenuInput::closeWindow(sf::Event event) {
-    this->state->game->window->close();
+    this->state->game->window.close();
     return;
 }
 

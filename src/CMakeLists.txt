@@ -6,7 +6,8 @@ find_package(SFML 2 REQUIRED network graphics window audio system)
 add_executable(${PROJECT_NAME} 
 	game_state_menu.cpp
     game.cpp
-	input/menu/input_menu.cpp
+	input/menu_input.cpp
+    game_manager.cpp
     main.cpp
 )
 

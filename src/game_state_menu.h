@@ -14,10 +14,10 @@ class GameStateMenu : public GameState {
     public:
         GameStateMenu(std::shared_ptr<Game> game);
         void update(const float dt);
-        void setInputs(std::vector<std::unique_ptr<input::MenuInput>> inputs);
+        void setInputs(std::vector<input::MenuInput> inputs);
 
     private:
-        std::vector<std::unique_ptr<input::MenuInput>> inputs;
+        std::vector<input::MenuInput> inputs;
         void updateInputs();
 
 };

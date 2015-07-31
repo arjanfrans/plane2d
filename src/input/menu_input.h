@@ -5,6 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 
+class GameStateMenu;
 #include "../game_state_menu.h"
 
 namespace input {

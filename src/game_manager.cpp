@@ -3,19 +3,22 @@
 #include "game_manager.h"
 #include "game_state_menu.h"
 
-
+GameManager::GameManager() : game{nullptr} {
+    this->game = std::make_shared<Game>();
+}
 void GameManager::start() {
-    auto game = std::make_shared<Game>();
     createMenuState();
-    game->loop();
+    this->game->loop();
+    return;
 }
 
 void GameManager::createMenuState() {
     auto menuState = std::make_shared<GameStateMenu>(this->game);
-    std::vector<std::unique_ptr<input::MenuInput>> inputs {
-        std::unique_ptr<input::MenuInput>(new input::MenuInput{menuState})
+    std::vector<input::MenuInput> inputs {
+        input::MenuInput{menuState}
     };
     menuState->setInputs(inputs);
     this->game->pushState(menuState);
+    return;
 }
-  
+

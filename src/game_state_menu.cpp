@@ -9,7 +9,7 @@ GameStateMenu::GameStateMenu(std::shared_ptr<Game> game) {
     this->game = game;
 }
 
-void GameStateMenu::setInputs(std::vector<std::unique_ptr<input::MenuInput>> inputs) {
+void GameStateMenu::setInputs(std::vector<input::MenuInput> inputs) {
     this->inputs = std::move(inputs);
 }
 
@@ -21,9 +21,9 @@ void GameStateMenu::updateInputs() {
     if(this->inputs.size() > 0) {
         sf::Event event;
 
-        while(this->game->window->pollEvent(event)) {
+        while(this->game->window.pollEvent(event)) {
             for(auto& input : this->inputs) {
-                input->update(event);
+                input.update(event);
             }
         }
     }

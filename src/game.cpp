@@ -6,24 +6,23 @@
 #include "game.h"
 #include "game_state.h"
 
-Game::Game() 
-: window{new sf::RenderWindow(sf::VideoMode(800, 600), "brecourt")}
-{
-    this->window->setFramerateLimit(60);
+Game::Game() {
+    this->window.create(sf::VideoMode(800, 600), "Brecourt");
+    this->window.setFramerateLimit(60);
 }
 
 void Game::loop() {
     sf::Clock clock;
 
-    while(this->window->isOpen()) {
+    while(this->window.isOpen()) {
         sf::Time elapsed = clock.restart();
         float dt = elapsed.asSeconds();
 
         if(peekState() != nullptr) {
             peekState()->update(dt);
-            this->window->clear(sf::Color::Black);
+            this->window.clear(sf::Color::Black);
             // TODO: update views
-            this->window->display();
+            this->window.display();
         }
     }
     return;

@@ -6,6 +6,7 @@
 class GameManager {
 
     public:
+        GameManager();
         void start();
  
     private:

@@ -19,7 +19,7 @@ class Game {
         void popState();
         void changeState(std::shared_ptr<GameState> state);
         std::shared_ptr<GameState> peekState();
-        std::unique_ptr<sf::RenderWindow> window;
+        sf::RenderWindow window;
     private:
 
 };
