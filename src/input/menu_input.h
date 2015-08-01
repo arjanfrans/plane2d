@@ -19,6 +19,7 @@ public:
 
 private:
     void keyInput(sf::Event);
+    void mouseInput(sf::Event);
     void closeWindow(sf::Event event);
 };
 }

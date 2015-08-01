@@ -1,6 +1,8 @@
+#include <string>
+#include <map>
 #include <memory>
-#include "menu_view.h"
 
+#include "menu_view.h"
 #include "menu/button.h"
 
 #include "../utils/logger.h"
@@ -22,13 +24,17 @@ void MenuView::createButtons() {
     sf::Vector2u size{window.getSize()};
     auto itemCount = this->state->items.size();
     auto itemHeight = size.y / itemCount;
-    for (auto i = 0; i < itemCount; ++i) {
-        auto item = this->state->items.at(i);
+
+    for (int i = 0; i < this->state->items.size(); ++i) {
+        auto &itemKey = this->state->itemKeys.at(i);
+        auto &item = this->state->items.at(i);
         float x = size.x / 2;
         float y = (itemHeight / 2) * i;
         sf::Vector2f position{x, y};
-        menu::Button button{item, position, this->font, sf::Color::Green, sf::Color::Cyan, 24};
+
+        menu::Button button{item, position, itemKey, this->font, sf::Color::Green, sf::Color::Cyan, 24};
         this->buttons.push_back(button);
+        // this->mouseListeners.push_back(&button);
     }
     return;
 }

@@ -6,6 +6,7 @@ find_package(SFML 2 REQUIRED network graphics window audio system)
 add_executable(${PROJECT_NAME} 
 	game_state_menu.cpp
     game.cpp
+    view/mouse_listener.cpp
 	input/menu_input.cpp
     view/menu/button.cpp
     view/menu_view.cpp

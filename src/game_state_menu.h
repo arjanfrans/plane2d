@@ -3,7 +3,6 @@
 
 #include <memory>
 #include <vector>
-#include <map>
 
 #include "game.h"
 #include "game_state.h"
@@ -17,7 +16,7 @@ class MenuView;
 #include "input/menu_input.h"
 #include "view/menu_view.h"
 
-enum MenuItem { START = 0, OPTIONS = 1, EXIT = 2 };
+enum class MenuItem { START, OPTIONS, EXIT };
 
 class GameStateMenu : public GameState {
 
@@ -26,11 +25,15 @@ public:
     void update(const float dt);
     void setInputs(std::vector<input::MenuInput> inputs);
     void setViews(std::vector<view::MenuView> view);
+    std::vector<std::string> itemKeys;
     std::vector<std::string> items;
     void moveUp();
     void moveDown();
     void select();
+    void selectByKey(std::string);
     int selectedItemIndex;
+    std::string selectedItem;
+    // std::vector<view::MouseListener> getMouseListeners();
 
 private:
     std::vector<input::MenuInput> inputs;

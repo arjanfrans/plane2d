@@ -15,6 +15,7 @@ public:
     MenuView(std::shared_ptr<GameStateMenu> state);
     std::shared_ptr<GameStateMenu> state;
     void draw(sf::RenderWindow &window);
+    // std::vector<MouseListener&> mouseListeners;
 
 private:
     std::shared_ptr<sf::Font> font;
