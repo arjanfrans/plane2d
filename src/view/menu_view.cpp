@@ -10,7 +10,8 @@ namespace view {
 MenuView::MenuView(std::shared_ptr<GameStateMenu> state) : font{std::make_shared<sf::Font>()} {
     this->state = state;
     if (!font->loadFromFile("data/fonts/font.ttf")) {
-        LOG(FATAL) << "Unable to load font.";
+        this->state->game->window.close();
+        LOG(ERROR) << "Unable to load font.";
         exit(EXIT_FAILURE);
     }
     createButtons();
@@ -33,7 +34,13 @@ void MenuView::createButtons() {
 }
 
 void MenuView::draw(sf::RenderWindow &window) {
-    for (auto &button : this->buttons) {
+    for (int i = 0; i < this->buttons.size(); ++i) {
+        auto &button = this->buttons.at(i);
+        if (i == this->state->selectedItemIndex) {
+            button.setActive(true);
+        } else {
+            button.setActive(false);
+        }
         button.draw(window);
     }
     return;

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.7)
 
-project(brecourt)
+project(plane)
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)

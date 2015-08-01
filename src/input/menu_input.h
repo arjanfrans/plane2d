@@ -12,17 +12,15 @@ namespace input {
 
 class MenuInput {
 
-    public:
-        MenuInput(std::shared_ptr<GameStateMenu> state);
-        std::shared_ptr<GameStateMenu> state = nullptr;
-        void update(sf::Event event);
+public:
+    MenuInput(std::shared_ptr<GameStateMenu> state);
+    std::shared_ptr<GameStateMenu> state = nullptr;
+    void update(sf::Event event);
 
-    private:
-        void keyInput(sf::Event);
-        void closeWindow(sf::Event event);
-
+private:
+    void keyInput(sf::Event);
+    void closeWindow(sf::Event event);
 };
-
 }
 
 #endif

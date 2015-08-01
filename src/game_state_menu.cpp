@@ -9,12 +9,7 @@
 #include "utils/logger.h"
 
 GameStateMenu::GameStateMenu(std::shared_ptr<Game> game)
-: items{
-    {"Start game"},
-    {"Options"},
-    {"Exit game"}
-}, selectedItemIndex{0}
-{
+    : items{{"Start game"}, {"Options"}, {"Exit game"}}, selectedItemIndex{0} {
     this->game = game;
 }
 
@@ -28,23 +23,37 @@ void GameStateMenu::setViews(std::vector<view::MenuView> views) {
     return;
 }
 
-void GameStateMenu::moveUp() {
-    if(this->selectedItemIndex < this->items.size()) {
+void GameStateMenu::moveDown() {
+    if (this->selectedItemIndex < this->items.size() - 1) {
         this->selectedItemIndex = this->selectedItemIndex + 1;
+        return;
+    }
+    LOG(INFO) << "Can not move down.";
+    return;
+}
+
+void GameStateMenu::moveUp() {
+    if (this->selectedItemIndex > 0) {
+        this->selectedItemIndex = this->selectedItemIndex - 1;
         return;
     }
     LOG(INFO) << "Can not move up.";
     return;
 }
 
-void GameStateMenu::moveDown() {
-    if(this->selectedItemIndex > 0) {
-        this->selectedItemIndex = this->selectedItemIndex - 1;
-        return;
+void GameStateMenu::select() {
+    switch (this->selectedItemIndex) {
+        case MenuItem::EXIT:
+            this->game->window.close();
+            LOG(INFO) << "Closing window.";
+            break;
+        default:
+            LOG(INFO) << "selectedItemIndex does not do anything.";
+            break;
     }
-    LOG(INFO) << "Can not move down.";
     return;
 }
+
 void GameStateMenu::update(const float dt) {
     updateInputs();
     updateViews();
@@ -52,11 +61,11 @@ void GameStateMenu::update(const float dt) {
 }
 
 void GameStateMenu::updateInputs() {
-    if(this->inputs.size() > 0) {
+    if (this->inputs.size() > 0) {
         sf::Event event;
 
-        while(this->game->window.pollEvent(event)) {
-            for(auto& input : this->inputs) {
+        while (this->game->window.pollEvent(event)) {
+            for (auto &input : this->inputs) {
                 input.update(event);
             }
         }
@@ -65,8 +74,8 @@ void GameStateMenu::updateInputs() {
 }
 
 void GameStateMenu::updateViews() {
-    if(this->views.size() > 0) {
-        for(auto& view : this->views) {
+    if (this->views.size() > 0) {
+        for (auto &view : this->views) {
             view.draw(this->game->window);
         }
     }

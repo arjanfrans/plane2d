@@ -29,9 +29,8 @@ public:
     std::vector<std::string> items;
     void moveUp();
     void moveDown();
-    void selectItem(int index);
+    void select();
     int selectedItemIndex;
-
 
 private:
     std::vector<input::MenuInput> inputs;

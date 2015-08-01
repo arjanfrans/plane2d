@@ -17,12 +17,8 @@ void GameManager::start() {
 
 void GameManager::createMenuState() {
     auto menuState = std::make_shared<GameStateMenu>(this->game);
-    std::vector<input::MenuInput> inputs {
-        input::MenuInput{menuState}
-    };
-    std::vector<view::MenuView> views {
-        view::MenuView{menuState}
-    };
+    std::vector<input::MenuInput> inputs{input::MenuInput{menuState}};
+    std::vector<view::MenuView> views{view::MenuView{menuState}};
     menuState->setInputs(inputs);
     menuState->setViews(views);
     this->game->pushState(menuState);

@@ -11,18 +11,16 @@ namespace view {
 
 class MenuView {
 
-    public:
-        MenuView(std::shared_ptr<GameStateMenu> state);
-        std::shared_ptr<GameStateMenu> state;
-        void draw(sf::RenderWindow &window);
+public:
+    MenuView(std::shared_ptr<GameStateMenu> state);
+    std::shared_ptr<GameStateMenu> state;
+    void draw(sf::RenderWindow &window);
 
-    private:
-        std::shared_ptr<sf::Font> font;
-        std::vector<menu::Button> buttons;
-        void createButtons();
-
+private:
+    std::shared_ptr<sf::Font> font;
+    std::vector<menu::Button> buttons;
+    void createButtons();
 };
-
 }
 
 #endif
