@@ -5,14 +5,13 @@
 
 class GameManager {
 
-    public:
-        GameManager();
-        void start();
- 
-    private:
-        std::shared_ptr<Game> game;
-        void createMenuState();
+public:
+    GameManager();
+    void start();
 
+private:
+    std::shared_ptr<Game> game;
+    void createMenuState();
 };
 
 #endif

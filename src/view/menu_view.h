@@ -5,6 +5,7 @@
 
 class GameStateMenu;
 #include "../game_state_menu.h"
+#include "menu/button.h"
 
 namespace view {
 
@@ -13,10 +14,13 @@ class MenuView {
     public:
         MenuView(std::shared_ptr<GameStateMenu> state);
         std::shared_ptr<GameStateMenu> state;
-        void draw();
+        void draw(sf::RenderWindow &window);
 
     private:
-        sf::Font font;
+        std::shared_ptr<sf::Font> font;
+        std::vector<menu::Button> buttons;
+        void createButtons();
+
 };
 
 }

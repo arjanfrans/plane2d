@@ -7,6 +7,7 @@ add_executable(${PROJECT_NAME}
 	game_state_menu.cpp
     game.cpp
 	input/menu_input.cpp
+    view/menu/button.cpp
     view/menu_view.cpp
     game_manager.cpp
     main.cpp

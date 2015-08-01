@@ -10,9 +10,10 @@
 
 GameStateMenu::GameStateMenu(std::shared_ptr<Game> game)
 : items{
-    {MenuItem::START, "Start game"},
-    {MenuItem::EXIT, "Exit game"}
-}
+    {"Start game"},
+    {"Options"},
+    {"Exit game"}
+}, selectedItemIndex{0}
 {
     this->game = game;
 }
@@ -46,6 +47,7 @@ void GameStateMenu::moveDown() {
 }
 void GameStateMenu::update(const float dt) {
     updateInputs();
+    updateViews();
     return;
 }
 
@@ -57,6 +59,15 @@ void GameStateMenu::updateInputs() {
             for(auto& input : this->inputs) {
                 input.update(event);
             }
+        }
+    }
+    return;
+}
+
+void GameStateMenu::updateViews() {
+    if(this->views.size() > 0) {
+        for(auto& view : this->views) {
+            view.draw(this->game->window);
         }
     }
     return;

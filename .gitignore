@@ -1,4 +1,6 @@
 build
+logs
+log
 bin
 
 # Compiled Object files

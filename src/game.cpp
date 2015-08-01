@@ -17,14 +17,12 @@ void Game::loop() {
     LOG(INFO) << "Start game loop.";
     sf::Clock clock;
 
-    while(this->window.isOpen()) {
+    while (this->window.isOpen()) {
         sf::Time elapsed = clock.restart();
         float dt = elapsed.asSeconds();
-
-        if(peekState() != nullptr) {
-            peekState()->update(dt);
+        if (peekState() != nullptr) {
             this->window.clear(sf::Color::Black);
-            // TODO: update views
+            peekState()->update(dt);
             this->window.display();
         }
     }
@@ -42,16 +40,16 @@ void Game::popState() {
 }
 
 void Game::changeState(std::shared_ptr<GameState> state) {
-    if(!this->states.empty()) {
-            popState();
-        }
+    if (!this->states.empty()) {
+        popState();
+    }
     pushState(move(state));
     return;
 }
 
 std::shared_ptr<GameState> Game::peekState() {
-    if(this->states.empty()) {
-            return nullptr;
-        }
+    if (this->states.empty()) {
+        return nullptr;
+    }
     return this->states.top();
 }
