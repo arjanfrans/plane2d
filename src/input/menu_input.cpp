@@ -14,7 +14,10 @@ MenuInput::MenuInput(std::shared_ptr<GameStateMenu> state) {
 }
 
 void MenuInput::update(sf::Event event) {
-    mouseInput(event);
+    if (event.type == sf::Event::MouseMoved) {
+        mouseMovement(event);
+    }
+
     switch (event.type) {
         case sf::Event::Closed:
             closeWindow(event);
@@ -22,8 +25,8 @@ void MenuInput::update(sf::Event event) {
         case sf::Event::KeyPressed:
             keyInput(event);
             break;
-        case sf::Event::MouseMoved:
-            // mouseInput(event);
+        case sf::Event::MouseButtonPressed:
+            mouseClick(event);
             break;
         default:
             break;
@@ -31,15 +34,31 @@ void MenuInput::update(sf::Event event) {
     return;
 }
 
-void MenuInput::mouseInput(sf::Event event) {
+void MenuInput::mouseClick(sf::Event event) {
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        auto buttons = this->state->getButtons();
+        auto position = sf::Mouse::getPosition(this->state->game->window);
+        for (auto &button : buttons) {
+            sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
+            if (button->overlaps(floatPosition)) {
+                this->state->select();
+                return;
+            }
+        }
+    }
     return;
-    // auto mouseListeners = this->state->getMouseListeners();
-    // auto position = sf::Mouse::getPosition(this->state->game->window);
-    // for(auto& listener : mouseListeners) {
-    //     if(listener.overlaps(position)) {
-    //
-    //     }
-    // }
+}
+
+void MenuInput::mouseMovement(sf::Event event) {
+    auto buttons = this->state->getButtons();
+    auto position = sf::Mouse::getPosition(this->state->game->window);
+    for (auto &button : buttons) {
+        sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
+        if (button->overlaps(floatPosition)) {
+            this->state->setSelectedItem(button->name);
+        }
+    }
+    return;
 }
 
 void MenuInput::keyInput(sf::Event event) {

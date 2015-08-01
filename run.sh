@@ -1,3 +1,3 @@
 cd build
 make
-./src/brecourt
+./src/plane

@@ -15,6 +15,7 @@ class MenuView;
 }
 #include "input/menu_input.h"
 #include "view/menu_view.h"
+#include "view/menu/button.h"
 
 enum class MenuItem { START, OPTIONS, EXIT };
 
@@ -30,10 +31,10 @@ public:
     void moveUp();
     void moveDown();
     void select();
-    void selectByKey(std::string);
+    void setSelectedItem(std::string);
     int selectedItemIndex;
     std::string selectedItem;
-    // std::vector<view::MouseListener> getMouseListeners();
+    std::vector<std::shared_ptr<view::menu::Button>> getButtons();
 
 private:
     std::vector<input::MenuInput> inputs;

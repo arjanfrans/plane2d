@@ -5,7 +5,7 @@
 #include "input/menu_input.h"
 #include "game.h"
 #include "game_state_menu.h"
-#include "view/mouse_listener.h"
+#include "view/menu/button.h"
 
 #include "utils/logger.h"
 
@@ -45,7 +45,12 @@ void GameStateMenu::moveDown() {
     return;
 }
 
-void GameStateMenu::selectByKey(std::string key) {
+void GameStateMenu::setSelectedItem(std::string key) {
+    this->selectedItemIndex = std::find(this->itemKeys.begin(), this->itemKeys.end(), key) - this->itemKeys.begin();
+}
+
+void GameStateMenu::select() {
+    auto key = this->itemKeys.at(this->selectedItemIndex);
     if (key == "start") {
 
     } else if (key == "options") {
@@ -57,10 +62,6 @@ void GameStateMenu::selectByKey(std::string key) {
         LOG(INFO) << "selectedItemIndex does not do anything.";
     }
     return;
-}
-
-void GameStateMenu::select() {
-    selectByKey(this->itemKeys.at(this->selectedItemIndex));
     return;
 }
 
@@ -70,15 +71,15 @@ void GameStateMenu::update(const float dt) {
     return;
 }
 
-// std::vector<view::MouseListener &> GameStateMenu::getMouseListeners() {
-//     std::vector<view::MouseListener &> listeners;
-//     for (auto &view : this->views) {
-//         for (auto &listener : view.mouseListeners) {
-//             listeners.insert(listener);
-//         }
-//     }
-//     return listeners;
-// }
+std::vector<std::shared_ptr<view::menu::Button>> GameStateMenu::getButtons() {
+    std::vector<std::shared_ptr<view::menu::Button>> buttons;
+    for (auto &view : this->views) {
+        for (auto &button : view.buttons) {
+            buttons.push_back(button);
+        }
+    }
+    return buttons;
+}
 
 void GameStateMenu::updateInputs() {
     if (this->inputs.size() > 0) {

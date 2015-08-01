@@ -18,6 +18,11 @@ Button::Button(std::string value, sf::Vector2f position, std::string name, std::
     this->bounds = this->text.getGlobalBounds();
 }
 
+void Button::setColor(sf::Color color) {
+    this->color = color;
+    this->text.setColor(this->color);
+}
+
 void Button::setActive(bool active) {
     if (active && !this->active) {
         this->text.setColor(activeColor);

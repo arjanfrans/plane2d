@@ -20,6 +20,7 @@ public:
     sf::Vector2f position;
     void draw(sf::RenderWindow &window);
     std::string name;
+    void setColor(sf::Color color);
 
 private:
     std::shared_ptr<sf::Font> font;

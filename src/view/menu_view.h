@@ -15,11 +15,10 @@ public:
     MenuView(std::shared_ptr<GameStateMenu> state);
     std::shared_ptr<GameStateMenu> state;
     void draw(sf::RenderWindow &window);
-    // std::vector<MouseListener&> mouseListeners;
+    std::vector<std::shared_ptr<menu::Button>> buttons;
 
 private:
     std::shared_ptr<sf::Font> font;
-    std::vector<menu::Button> buttons;
     void createButtons();
 };
 }

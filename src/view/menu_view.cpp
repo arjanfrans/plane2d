@@ -32,9 +32,9 @@ void MenuView::createButtons() {
         float y = (itemHeight / 2) * i;
         sf::Vector2f position{x, y};
 
-        menu::Button button{item, position, itemKey, this->font, sf::Color::Green, sf::Color::Cyan, 24};
+        auto button = std::make_shared<menu::Button>(item, position, itemKey, this->font,
+                                                     sf::Color::Green, sf::Color::Cyan, 24);
         this->buttons.push_back(button);
-        // this->mouseListeners.push_back(&button);
     }
     return;
 }
@@ -43,11 +43,11 @@ void MenuView::draw(sf::RenderWindow &window) {
     for (int i = 0; i < this->buttons.size(); ++i) {
         auto &button = this->buttons.at(i);
         if (i == this->state->selectedItemIndex) {
-            button.setActive(true);
+            button->setActive(true);
         } else {
-            button.setActive(false);
+            button->setActive(false);
         }
-        button.draw(window);
+        button->draw(window);
     }
     return;
 }
