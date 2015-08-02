@@ -2,6 +2,7 @@
 #define MENU_VIEW_H
 
 #include <memory>
+#include <string>
 
 #include "menu_state.h"
 #include "../../ui/button.h"
@@ -13,7 +14,7 @@ class MenuState;
 class MenuView {
 
 public:
-    MenuView(std::shared_ptr<MenuState> state);
+    MenuView(std::shared_ptr<MenuState> state, std::string fontName);
     std::shared_ptr<MenuState> state;
     void draw(sf::RenderWindow &window);
     std::vector<std::shared_ptr<ui::Button>> buttons;

@@ -12,9 +12,10 @@ void Plane::createStates() {
 }
 
 void Plane::createMenuState() {
+    auto fontName = "SIXTY.TTF";
     auto menuState = std::make_shared<pl::MenuState>(this->stateManager);
     std::vector<pl::MenuInput> inputs{pl::MenuInput{menuState}};
-    std::vector<pl::MenuView> views{pl::MenuView{menuState}};
+    std::vector<pl::MenuView> views{pl::MenuView{menuState, fontName}};
     menuState->setInputs(inputs);
     menuState->setViews(views);
     this->stateManager->pushState(menuState);
