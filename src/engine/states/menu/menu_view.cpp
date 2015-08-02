@@ -2,17 +2,20 @@
 #include <map>
 #include <memory>
 
+#include <SFML/Graphics.hpp>
+
+#include "menu_state.h"
 #include "menu_view.h"
-#include "menu/button.h"
+#include "../../ui/button.h"
 
-#include "../utils/logger.h"
+#include "../../utils/logger.h"
 
-namespace view {
+namespace pl {
 
-MenuView::MenuView(std::shared_ptr<GameStateMenu> state) : font{std::make_shared<sf::Font>()} {
+MenuView::MenuView(std::shared_ptr<MenuState> state) : font{std::make_shared<sf::Font>()} {
     this->state = state;
     if (!font->loadFromFile("data/fonts/font.ttf")) {
-        this->state->game->window.close();
+        this->state->stateManager->window.close();
         LOG(ERROR) << "Unable to load font.";
         exit(EXIT_FAILURE);
     }
@@ -20,7 +23,7 @@ MenuView::MenuView(std::shared_ptr<GameStateMenu> state) : font{std::make_shared
 }
 
 void MenuView::createButtons() {
-    auto &window = this->state->game->window;
+    auto &window = this->state->stateManager->window;
     sf::Vector2u size{window.getSize()};
     auto itemCount = this->state->items.size();
     auto itemHeight = size.y / itemCount;
@@ -32,8 +35,8 @@ void MenuView::createButtons() {
         float y = (itemHeight / 2) * i;
         sf::Vector2f position{x, y};
 
-        auto button = std::make_shared<menu::Button>(item, position, itemKey, this->font,
-                                                     sf::Color::Green, sf::Color::Cyan, 24);
+        auto button = std::make_shared<ui::Button>(item, position, itemKey, this->font, sf::Color::Green,
+                                                   sf::Color::Cyan, 24);
         this->buttons.push_back(button);
     }
     return;

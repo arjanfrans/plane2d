@@ -6,16 +6,16 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../mouse_listener.h"
+#include "mouse_listener.h"
 
-namespace view {
-namespace menu {
+namespace pl {
+namespace ui {
 
 class Button : public MouseListener {
 
 public:
-    Button(std::string value, sf::Vector2f position, std::string name, std::shared_ptr<sf::Font> font, sf::Color color,
-           sf::Color activeColor, int size);
+    Button(std::string value, sf::Vector2f position, std::string name, std::shared_ptr<sf::Font> font,
+           sf::Color color, sf::Color activeColor, int size);
     void setActive(bool active);
     sf::Vector2f position;
     void draw(sf::RenderWindow &window);

@@ -4,11 +4,11 @@
 #include "button.h"
 #include <SFML/Graphics.hpp>
 
-namespace view {
-namespace menu {
+namespace pl {
+namespace ui {
 
-Button::Button(std::string value, sf::Vector2f position, std::string name, std::shared_ptr<sf::Font> font, sf::Color color,
-               sf::Color activeColor, int size)
+Button::Button(std::string value, sf::Vector2f position, std::string name,
+               std::shared_ptr<sf::Font> font, sf::Color color, sf::Color activeColor, int size)
     : position{position}, name{name}, font{font}, active{false}, color{color}, activeColor{activeColor} {
     this->text.setString(value);
     this->text.setFont(*this->font);

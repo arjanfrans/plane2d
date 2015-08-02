@@ -3,17 +3,18 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "game.h"
-#include "game_state.h"
+#include "state_manager.h"
+#include "state.h"
 
-#include "utils/logger.h"
+#include "../utils/logger.h"
 
-Game::Game() {
+namespace pl {
+StateManager::StateManager() {
     this->window.create(sf::VideoMode(800, 600), "Brecourt");
     this->window.setFramerateLimit(60);
 }
 
-void Game::loop() {
+void StateManager::loop() {
     LOG(INFO) << "Start game loop.";
     sf::Clock clock;
 
@@ -29,17 +30,17 @@ void Game::loop() {
     return;
 }
 
-void Game::pushState(std::shared_ptr<GameState> state) {
+void StateManager::pushState(std::shared_ptr<State> state) {
     states.push(state);
     return;
 }
 
-void Game::popState() {
+void StateManager::popState() {
     states.pop();
     return;
 }
 
-void Game::changeState(std::shared_ptr<GameState> state) {
+void StateManager::changeState(std::shared_ptr<State> state) {
     if (!this->states.empty()) {
         popState();
     }
@@ -47,9 +48,10 @@ void Game::changeState(std::shared_ptr<GameState> state) {
     return;
 }
 
-std::shared_ptr<GameState> Game::peekState() {
+std::shared_ptr<State> StateManager::peekState() {
     if (this->states.empty()) {
         return nullptr;
     }
     return this->states.top();
+}
 }

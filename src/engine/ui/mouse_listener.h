@@ -3,7 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace view {
+namespace pl {
+namespace ui {
 
 class MouseListener {
 
@@ -11,5 +12,6 @@ public:
     sf::Rect<float> bounds;
     bool overlaps(sf::Vector2f position);
 };
+}
 }
 #endif

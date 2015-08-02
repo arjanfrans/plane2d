@@ -5,19 +5,20 @@
 
 #include <SFML/Graphics.hpp>
 
-class GameStateMenu;
-#include "../game_state_menu.h"
+#include "menu_state.h"
+#include "../../input/input.h"
 
-namespace input {
+namespace pl {
 
-class MenuInput {
+class MenuState;
+
+class MenuInput : public Input {
 
 public:
-    MenuInput(std::shared_ptr<GameStateMenu> state);
-    std::shared_ptr<GameStateMenu> state = nullptr;
-    void update(sf::Event event);
+    MenuInput(std::shared_ptr<MenuState> state);
 
 private:
+    std::shared_ptr<MenuState> state;
     void keyInput(sf::Event);
     void mouseClick(sf::Event);
     void mouseMovement(sf::Event);
