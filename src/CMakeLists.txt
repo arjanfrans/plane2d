@@ -1,12 +1,13 @@
 
-find_package(OpenGL REQUIRED)
+# find_package(OpenGL REQUIRED)
 find_package(SFML 2 REQUIRED network graphics window audio system)
-
+find_package(YamlCpp REQUIRED)
 
 # directories for header inclusion
 include_directories(
     ${OPENGL_INCLUDE_DIR}
 	${SFML_INCLUDE_DIR}
+    ${YAMLCPP_INCLUDE_DIR}
 )
 
 # add_executable(${PROJECT_NAME} ${project_SRC})
@@ -27,5 +28,6 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(
     ${PROJECT_NAME}
     ${OPENGL_LIBRARY}
-	${SFML_LIBRARIES}
+    ${SFML_LIBRARIES}
+    ${YAMLCPP_LIBRARY}
 )
