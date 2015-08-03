@@ -34,7 +34,6 @@ void Config::load() {
                 YAML::Node node = YAML::LoadFile(dirPath);
                 auto key = parsePath(dirPath, cwd);
                 newConfig[key] = node;
-                // this->configs.emplace(key, node);
             } else {
                 LOG(INFO) << "Not a YAML file.";
             }

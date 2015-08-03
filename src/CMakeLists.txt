@@ -16,7 +16,8 @@ include_directories(
 add_executable(${PROJECT_NAME} 
     engine/config.cpp
     engine/input/input.cpp
-    engine/states/state_manager.cpp
+    engine/states/state.cpp
+    engine/engine.cpp
     engine/states/menu/menu_input.cpp
     engine/states/menu/menu_state.cpp
     engine/states/menu/menu_view.cpp

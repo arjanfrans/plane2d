@@ -2,7 +2,7 @@
 
 #include "yaml-cpp/yaml.h"
 #include "config.h"
-#include "states/state_manager.h"
+#include "engine.h"
 #include "game.h"
 #include "utils/logger.h"
 
@@ -23,15 +23,15 @@ INITIALIZE_LOGGER
 // Unknown Only applicable to hierarchical logging and is used to turn off logging completely.
 
 namespace pl {
-Game::Game() : stateManager{nullptr} {
+Game::Game() : engine{nullptr} {
     auto config = std::make_shared<pl::Config>();
     config->load();
     this->config = config;
-    this->stateManager = std::make_shared<StateManager>(this->config);
+    this->engine = std::make_shared<Engine>(this->config);
 }
 void Game::start() {
     createStates();
-    this->stateManager->loop();
+    this->engine->loop();
     return;
 }
 }

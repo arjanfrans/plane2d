@@ -17,7 +17,7 @@ MenuView::MenuView(std::shared_ptr<MenuState> state)
     this->state = state;
     auto config = this->state->config->get("menu");
     if (!font->loadFromFile("data/fonts/" + config["font"]["name"].as<std::string>())) {
-        this->state->stateManager->window.close();
+        this->state->engine->window.close();
         LOG(ERROR) << "Unable to load font.";
         exit(EXIT_FAILURE);
     }
@@ -25,7 +25,7 @@ MenuView::MenuView(std::shared_ptr<MenuState> state)
 }
 
 void MenuView::createButtons() {
-    auto &window = this->state->stateManager->window;
+    auto &window = this->state->engine->window;
     sf::Vector2u size{window.getSize()};
     auto itemCount = this->state->items.size();
     auto itemHeight = size.y / itemCount;

@@ -16,7 +16,7 @@ MenuInput::MenuInput(std::shared_ptr<MenuState> state) {
 void MenuInput::mouseClick(sf::Event event) {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         auto buttons = this->state->getButtons();
-        auto position = sf::Mouse::getPosition(this->state->stateManager->window);
+        auto position = sf::Mouse::getPosition(this->state->engine->window);
         for (auto &button : buttons) {
             sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
             if (button->overlaps(floatPosition)) {
@@ -30,7 +30,7 @@ void MenuInput::mouseClick(sf::Event event) {
 
 void MenuInput::mouseMovement(sf::Event event) {
     auto buttons = this->state->getButtons();
-    auto position = sf::Mouse::getPosition(this->state->stateManager->window);
+    auto position = sf::Mouse::getPosition(this->state->engine->window);
     for (auto &button : buttons) {
         sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
         if (button->overlaps(floatPosition)) {
@@ -58,7 +58,7 @@ void MenuInput::keyInput(sf::Event event) {
 }
 
 void MenuInput::closeWindow(sf::Event event) {
-    this->state->stateManager->window.close();
+    this->state->engine->window.close();
     LOG(INFO) << "Closing window.";
     return;
 }

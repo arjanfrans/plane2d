@@ -14,12 +14,12 @@ void Plane::createStates() {
 }
 
 void Plane::createMenuState() {
-    auto menuState = std::make_shared<pl::MenuState>(this->stateManager);
+    auto menuState = std::make_shared<pl::MenuState>(this->engine);
     std::vector<pl::MenuInput> inputs{pl::MenuInput{menuState}};
     std::vector<pl::MenuView> views{pl::MenuView{menuState}};
     menuState->setInputs(inputs);
     menuState->setViews(views);
-    this->stateManager->pushState(menuState);
+    this->engine->pushState(menuState);
     return;
 }
 

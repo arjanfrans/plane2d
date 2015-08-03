@@ -3,19 +3,19 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "state_manager.h"
-#include "state.h"
+#include "engine.h"
+#include "states/state.h"
 
-#include "../utils/logger.h"
+#include "utils/logger.h"
 
 namespace pl {
-StateManager::StateManager(std::shared_ptr<Config> config) : config{config} {
+Engine::Engine(std::shared_ptr<Config> config) : config{config} {
     auto title = this->config->get("game")["title"].as<std::string>();
     this->window.create(sf::VideoMode(800, 600), title);
     this->window.setFramerateLimit(60);
 }
 
-void StateManager::loop() {
+void Engine::loop() {
     LOG(INFO) << "Start game loop.";
     sf::Clock clock;
 
@@ -31,17 +31,17 @@ void StateManager::loop() {
     return;
 }
 
-void StateManager::pushState(std::shared_ptr<State> state) {
+void Engine::pushState(std::shared_ptr<State> state) {
     states.push(state);
     return;
 }
 
-void StateManager::popState() {
+void Engine::popState() {
     states.pop();
     return;
 }
 
-void StateManager::changeState(std::shared_ptr<State> state) {
+void Engine::changeState(std::shared_ptr<State> state) {
     if (!this->states.empty()) {
         popState();
     }
@@ -49,7 +49,7 @@ void StateManager::changeState(std::shared_ptr<State> state) {
     return;
 }
 
-std::shared_ptr<State> StateManager::peekState() {
+std::shared_ptr<State> Engine::peekState() {
     if (this->states.empty()) {
         return nullptr;
     }

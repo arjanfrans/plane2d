@@ -5,16 +5,16 @@
 #include "menu_input.h"
 #include "menu_state.h"
 
-#include "../state_manager.h"
+#include "../state.h"
+#include "../../engine.h"
 #include "../../ui/button.h"
 
 #include "../../utils/logger.h"
 
 namespace pl {
 
-MenuState::MenuState(std::shared_ptr<StateManager> stateManager) : selectedItemIndex{0} {
-    this->stateManager = stateManager;
-    this->config = stateManager->config;
+MenuState::MenuState(std::shared_ptr<Engine> engine)
+    : State(engine), selectedItemIndex{0}  {
 
     // Parallel arrays
     this->itemKeys = {"start", "options", "exit"};
@@ -54,19 +54,28 @@ void MenuState::setSelectedItem(std::string key) {
         std::find(this->itemKeys.begin(), this->itemKeys.end(), key) - this->itemKeys.begin();
 }
 
+void MenuState::onStart() {
+    LOG(WARNING) << "Not implemented.";
+    return;
+};
+
+void MenuState::onOptions() {
+    LOG(WARNING) << "Not implemented.";
+    return;
+}
+
 void MenuState::select() {
     auto key = this->itemKeys.at(this->selectedItemIndex);
     if (key == "start") {
-
+        onStart();
     } else if (key == "options") {
-
+        onOptions();
     } else if (key == "exit") {
-        this->stateManager->window.close();
+        this->engine->window.close();
         LOG(INFO) << "Closing window.";
     } else {
         LOG(INFO) << "selectedItemIndex does not do anything.";
     }
-    return;
     return;
 }
 
@@ -90,7 +99,7 @@ void MenuState::updateInputs() {
     if (this->inputs.size() > 0) {
         sf::Event event;
 
-        while (this->stateManager->window.pollEvent(event)) {
+        while (this->engine->window.pollEvent(event)) {
             for (auto &input : this->inputs) {
                 input.update(event);
             }
@@ -102,7 +111,7 @@ void MenuState::updateInputs() {
 void MenuState::updateViews() {
     if (this->views.size() > 0) {
         for (auto &view : this->views) {
-            view.draw(this->stateManager->window);
+            view.draw(this->engine->window);
         }
     }
     return;

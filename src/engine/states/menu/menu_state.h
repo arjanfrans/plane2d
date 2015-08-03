@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 
-#include "../state_manager.h"
+#include "../../engine.h"
 #include "../state.h"
 
 #include "../../config.h"
@@ -20,7 +20,7 @@ enum class MenuItem { START, OPTIONS, EXIT };
 class MenuState : public State {
 
 public:
-    MenuState(std::shared_ptr<StateManager> stateManager);
+    MenuState(std::shared_ptr<Engine> engine);
     void update(const float dt);
     void setInputs(std::vector<MenuInput> inputs);
     void setViews(std::vector<MenuView> view);
@@ -39,6 +39,9 @@ private:
     std::vector<MenuView> views;
     void updateInputs();
     void updateViews();
+    void onStart();
+    void onOptions();
+    // virtual void onOptions() = 0;
 };
 }
 

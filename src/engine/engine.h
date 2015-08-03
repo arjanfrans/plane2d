@@ -7,17 +7,17 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../config.h"
-#include "state.h"
+#include "config.h"
+#include "states/state.h"
 
 namespace pl {
 
 class State;
 
-class StateManager {
+class Engine {
 
 public:
-    StateManager(std::shared_ptr<Config> config);
+    Engine(std::shared_ptr<Config> config);
     void loop();
     std::shared_ptr<Config> config;
     std::stack<std::shared_ptr<State>> states;
