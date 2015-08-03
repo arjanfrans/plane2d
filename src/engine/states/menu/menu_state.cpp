@@ -14,6 +14,7 @@ namespace pl {
 
 MenuState::MenuState(std::shared_ptr<StateManager> stateManager) : selectedItemIndex{0} {
     this->stateManager = stateManager;
+    this->config = stateManager->config;
 
     // Parallel arrays
     this->itemKeys = {"start", "options", "exit"};
@@ -107,3 +108,4 @@ void MenuState::updateViews() {
     return;
 }
 }
+

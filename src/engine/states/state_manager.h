@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../config.h"
 #include "state.h"
 
 namespace pl {
@@ -16,8 +17,9 @@ class State;
 class StateManager {
 
 public:
-    StateManager();
+    StateManager(std::shared_ptr<Config> config);
     void loop();
+    std::shared_ptr<Config> config;
     std::stack<std::shared_ptr<State>> states;
     void pushState(std::shared_ptr<State> state);
     void popState();

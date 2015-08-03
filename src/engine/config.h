@@ -11,7 +11,9 @@ public:
     YAML::Node get(std::string);
 
 private:
-    std::map<std::string, YAML::Node> configs;
+    YAML::Node config;
+    // std::map<std::string, YAML::Node> configs;
+    std::string parsePath(std::string path, std::string cwd);
 };
 }
 #endif

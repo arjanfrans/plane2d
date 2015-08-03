@@ -1,5 +1,7 @@
 #include <memory>
 
+#include "yaml-cpp/yaml.h"
+#include "config.h"
 #include "states/state_manager.h"
 #include "game.h"
 #include "utils/logger.h"
@@ -22,7 +24,10 @@ INITIALIZE_LOGGER
 
 namespace pl {
 Game::Game() : stateManager{nullptr} {
-    this->stateManager = std::make_shared<StateManager>();
+    auto config = std::make_shared<pl::Config>();
+    config->load();
+    this->config = config;
+    this->stateManager = std::make_shared<StateManager>(this->config);
 }
 void Game::start() {
     createStates();

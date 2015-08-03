@@ -7,6 +7,7 @@
 #include "../state_manager.h"
 #include "../state.h"
 
+#include "../../config.h"
 #include "menu_input.h"
 #include "menu_view.h"
 #include "../../ui/button.h"

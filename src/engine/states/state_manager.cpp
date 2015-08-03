@@ -9,8 +9,9 @@
 #include "../utils/logger.h"
 
 namespace pl {
-StateManager::StateManager() {
-    this->window.create(sf::VideoMode(800, 600), "Brecourt");
+StateManager::StateManager(std::shared_ptr<Config> config) : config{config} {
+    auto title = this->config->get("game")["title"].as<std::string>();
+    this->window.create(sf::VideoMode(800, 600), title);
     this->window.setFramerateLimit(60);
 }
 

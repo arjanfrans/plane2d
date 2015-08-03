@@ -1,8 +1,8 @@
 font:
-    - name: "SIXTY.TTF"
-    - size: 30
+    name: "font.ttf"
+    size: 30
 
 buttons:
-    - color: [255, 0, 0] 
-    - activeColor: [0, 255, 0]
+    color: [255, 0, 0] 
+    activeColor: [0, 255, 0]
 

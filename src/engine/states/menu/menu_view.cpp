@@ -12,10 +12,11 @@
 
 namespace pl {
 
-MenuView::MenuView(std::shared_ptr<MenuState> state, std::string fontName)
+MenuView::MenuView(std::shared_ptr<MenuState> state)
     : font{std::make_shared<sf::Font>()} {
     this->state = state;
-    if (!font->loadFromFile("data/fonts/" + fontName)) {
+    auto config = this->state->config->get("menu");
+    if (!font->loadFromFile("data/fonts/" + config["font"]["name"].as<std::string>())) {
         this->state->stateManager->window.close();
         LOG(ERROR) << "Unable to load font.";
         exit(EXIT_FAILURE);

@@ -14,7 +14,7 @@ class MenuState;
 class MenuView {
 
 public:
-    MenuView(std::shared_ptr<MenuState> state, std::string fontName);
+    MenuView(std::shared_ptr<MenuState> state);
     std::shared_ptr<MenuState> state;
     void draw(sf::RenderWindow &window);
     std::vector<std::shared_ptr<ui::Button>> buttons;
