@@ -1,11 +1,12 @@
 #include <iostream>
 #include "plane.h"
 
-// #include "yaml-cpp/yaml.h"
+#include "engine/config.h"
 
 int main() {
-    // YAML::Node node = YAML::Load("[1, 2, 3]");
-    Plane game;
-    game.start();
+    pl::Config config;
+    config.load();
+    // Plane game;
+    // game.start();
     return 0;
 }

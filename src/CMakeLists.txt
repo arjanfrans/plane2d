@@ -1,5 +1,6 @@
 
 # find_package(OpenGL REQUIRED)
+find_package(Boost 1.54.0 REQUIRED COMPONENTS filesystem regex)
 find_package(SFML 2 REQUIRED network graphics window audio system)
 find_package(YamlCpp REQUIRED)
 
@@ -8,10 +9,12 @@ include_directories(
     ${OPENGL_INCLUDE_DIR}
 	${SFML_INCLUDE_DIR}
     ${YAMLCPP_INCLUDE_DIR}
-)
+    ${Boost_INCLUDE_DIR}
+    )
 
 # add_executable(${PROJECT_NAME} ${project_SRC})
 add_executable(${PROJECT_NAME} 
+    engine/config.cpp
     engine/input/input.cpp
     engine/states/state_manager.cpp
     engine/states/menu/menu_input.cpp
@@ -30,4 +33,5 @@ target_link_libraries(
     ${OPENGL_LIBRARY}
     ${SFML_LIBRARIES}
     ${YAMLCPP_LIBRARY}
+    ${Boost_LIBRARIES}
 )
