@@ -9,15 +9,31 @@
 #include "utils/logger.h"
 
 namespace pl {
-Engine::Engine(std::shared_ptr<Config> config) : config{config}, windowScale{sf::Vector2f(0, 0)} {
-    auto gameConfig = config->get("game");
-    auto title = gameConfig["title"].as<std::string>();
-    bool fullscreen = gameConfig["fullscreen"].as<bool>();
+Engine::Engine(std::shared_ptr<Config> config) : config{config} {
+    auto gameConfig = this->config->get("game");
+    this->fullscreen = this->config->get("game")["fullscreen"].as<bool>();
     auto width = gameConfig["width"].as<unsigned int>();
     auto height = gameConfig["height"].as<unsigned int>();
-    sf::VideoMode videoMode{width, height};
+    changeWindow(width, height, this->fullscreen);
+}
+
+void Engine::changeFullscreen() {
+    auto gameConfig = this->config->get("game");
+    auto width = gameConfig["width"].as<unsigned int>();
+    auto height = gameConfig["height"].as<unsigned int>();
+
+    this->fullscreen = !this->fullscreen;
+    changeWindow(width, height, this->fullscreen);
+    return;
+}
+
+void Engine::changeWindow(unsigned int width, unsigned int height, bool fullscreen) {
+    auto gameConfig = this->config->get("game");
+    auto title = gameConfig["title"].as<std::string>();
     auto desktopMode = sf::VideoMode::getDesktopMode();
-    if(width > desktopMode.width || height > desktopMode.height) {
+
+    sf::VideoMode videoMode{width, height};
+    if (width > desktopMode.width || height > desktopMode.height) {
         videoMode.width = 800;
         videoMode.height = 600;
         LOG(WARNING) << "VideoMode too large for screen, falling back to default.";
@@ -29,11 +45,14 @@ Engine::Engine(std::shared_ptr<Config> config) : config{config}, windowScale{sf:
     }
 
     if (fullscreen) {
+        LOG(INFO) << "Changing to fullscreen.";
         this->window.create(videoMode, title, sf::Style::Fullscreen);
     } else {
-        this->window.create(videoMode, title);
+        LOG(INFO) << "Changing to window mode.";
+        this->window.create(videoMode, title, sf::Style::Default);
     }
     this->window.setFramerateLimit(60);
+    return;
 }
 
 void Engine::loop() {

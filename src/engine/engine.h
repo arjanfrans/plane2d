@@ -26,7 +26,9 @@ public:
     void changeState(std::shared_ptr<State> state);
     std::shared_ptr<State> peekState();
     sf::RenderWindow window;
-    sf::Vector2f windowScale;
+    bool fullscreen;
+    void changeFullscreen(); 
+    void changeWindow(unsigned int width, unsigned int height, bool fullscreen); 
 
 private:
 };

@@ -16,6 +16,7 @@ void Input::update(sf::Event event) {
         mouseMovement(event);
     }
 
+
     switch (event.type) {
         case sf::Event::Closed:
             closeWindow(event);

@@ -36,11 +36,7 @@ void MenuInput::mouseMovement(sf::Event event) {
     for (auto &button : buttons) {
         sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
         if (button->overlaps(floatPosition)) {
-            // LOG(INFO) << "--------";
-            // LOG(INFO) << floatPosition.x;
-            // LOG(INFO) << button->getPosition().x;
-            //
-            // LOG(INFO) << "Overlaps";
+            LOG(INFO) << "Overlaps";
             this->state->setSelectedItem(button->name);
         }
     }
@@ -56,7 +52,11 @@ void MenuInput::keyInput(sf::Event event) {
             this->state->moveDown();
             break;
         case sf::Keyboard::Return:
-            this->state->select();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt)) {
+                this->state->engine->changeFullscreen();
+            } else {
+                this->state->select();
+            }
             break;
         default:
             break;

@@ -76,8 +76,6 @@ void MenuView::draw(sf::RenderWindow &window) {
         } else {
             button->setActive(false);
         }
-        auto scale = this->state->engine->windowScale;
-        // button->setScale(scale.x, scale.y);
         window.draw(button->getDrawable());
     }
     return;
