@@ -9,7 +9,7 @@ namespace ui {
 class MouseListener {
 
 public:
-    sf::Rect<float> bounds;
+    virtual sf::FloatRect getBounds() = 0;
     bool overlaps(sf::Vector2f position);
 };
 }

@@ -9,7 +9,7 @@
 #include "utils/logger.h"
 
 namespace pl {
-Engine::Engine(std::shared_ptr<Config> config) : config{config} {
+Engine::Engine(std::shared_ptr<Config> config) : config{config}, windowScale{sf::Vector2f(0, 0)} {
     auto title = this->config->get("game")["title"].as<std::string>();
     this->window.create(sf::VideoMode(800, 600), title);
     this->window.setFramerateLimit(60);

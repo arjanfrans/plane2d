@@ -16,8 +16,11 @@ class MenuView {
 public:
     MenuView(std::shared_ptr<MenuState> state);
     std::shared_ptr<MenuState> state;
+    void resize(float width, float height);
     void draw(sf::RenderWindow &window);
     std::vector<std::shared_ptr<ui::Button>> buttons;
+
+    sf::View fixedView;
 
 private:
     std::shared_ptr<sf::Font> font;

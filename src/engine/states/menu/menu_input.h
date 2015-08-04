@@ -16,13 +16,13 @@ class MenuInput : public Input {
 
 public:
     MenuInput(std::shared_ptr<MenuState> state);
+    void onResize(sf::Event event);
 
 private:
     std::shared_ptr<MenuState> state;
     void keyInput(sf::Event);
     void mouseClick(sf::Event);
     void mouseMovement(sf::Event);
-    void closeWindow(sf::Event event);
 };
 }
 

@@ -12,21 +12,19 @@
 
 namespace pl {
 
-MenuView::MenuView(std::shared_ptr<MenuState> state)
-    : font{std::make_shared<sf::Font>()} {
-    this->state = state;
+MenuView::MenuView(std::shared_ptr<MenuState> state) : state{state}, font{std::make_shared<sf::Font>()} {
     auto config = this->state->config->get("menu");
     if (!font->loadFromFile("data/fonts/" + config["font"]["name"].as<std::string>())) {
         this->state->engine->window.close();
         LOG(ERROR) << "Unable to load font.";
         exit(EXIT_FAILURE);
     }
+    this->fixedView = this->state->engine->window.getView();
     createButtons();
 }
 
 void MenuView::createButtons() {
-    auto &window = this->state->engine->window;
-    sf::Vector2u size{window.getSize()};
+    auto size = this->fixedView.getSize();
     auto itemCount = this->state->items.size();
     auto itemHeight = size.y / itemCount;
 
@@ -35,6 +33,7 @@ void MenuView::createButtons() {
         auto &item = this->state->items.at(i);
         float x = size.x / 2;
         float y = (itemHeight / 2) * i;
+        LOG(INFO) << y; 
         sf::Vector2f position{x, y};
 
         auto button = std::make_shared<ui::Button>(item, position, itemKey, this->font, sf::Color::Green,
@@ -44,7 +43,13 @@ void MenuView::createButtons() {
     return;
 }
 
+void MenuView::resize(float width, float height) {
+    this->fixedView.setSize(width, height);
+    return;
+}
+
 void MenuView::draw(sf::RenderWindow &window) {
+    window.setView(this->fixedView);
     for (int i = 0; i < this->buttons.size(); ++i) {
         auto &button = this->buttons.at(i);
         if (i == this->state->selectedItemIndex) {
@@ -52,7 +57,9 @@ void MenuView::draw(sf::RenderWindow &window) {
         } else {
             button->setActive(false);
         }
-        button->draw(window);
+        auto scale = this->state->engine->windowScale;
+        // button->setScale(scale.x, scale.y);
+        window.draw(button->getDrawable());
     }
     return;
 }

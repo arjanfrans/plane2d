@@ -17,10 +17,14 @@ public:
     Button(std::string value, sf::Vector2f position, std::string name, std::shared_ptr<sf::Font> font,
            sf::Color color, sf::Color activeColor, int size);
     void setActive(bool active);
-    sf::Vector2f position;
-    void draw(sf::RenderWindow &window);
+    const sf::Vector2f &getPosition();
+    const sf::Text &getDrawable();
     std::string name;
     void setColor(sf::Color color);
+    void setScale(float x, float y);
+    const sf::Vector2f& getScale();
+    bool overlaps(sf::Vector2f position);
+    sf::FloatRect getBounds();
 
 private:
     std::shared_ptr<sf::Font> font;

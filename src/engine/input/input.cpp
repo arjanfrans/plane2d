@@ -3,8 +3,12 @@
 #include <SFML/Graphics.hpp>
 
 #include "input.h"
+#include "../utils/logger.h"
 
 namespace pl {
+
+Input::Input(std::shared_ptr<Engine> engine) : engine{engine} {
+}
 
 void Input::update(sf::Event event) {
     // Out of the switch to allow movement interactions simulationously with other input.
@@ -16,6 +20,9 @@ void Input::update(sf::Event event) {
         case sf::Event::Closed:
             closeWindow(event);
             break;
+        case sf::Event::Resized:
+            onResize(event);
+            break;
         case sf::Event::KeyPressed:
             keyInput(event);
             break;
@@ -25,6 +32,12 @@ void Input::update(sf::Event event) {
         default:
             break;
     }
+    return;
+}
+
+void Input::closeWindow(sf::Event event) {
+    this->engine->window.close();
+    LOG(INFO) << "Closing window.";
     return;
 }
 }

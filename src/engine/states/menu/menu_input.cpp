@@ -9,14 +9,15 @@
 
 namespace pl {
 
-MenuInput::MenuInput(std::shared_ptr<MenuState> state) {
-    this->state = state;
+MenuInput::MenuInput(std::shared_ptr<MenuState> state) : Input(state->engine), state{state} {
 }
 
 void MenuInput::mouseClick(sf::Event event) {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         auto buttons = this->state->getButtons();
-        auto position = sf::Mouse::getPosition(this->state->engine->window);
+        auto position = this->state->engine->window.mapPixelToCoords(
+            sf::Mouse::getPosition(this->state->engine->window));
+
         for (auto &button : buttons) {
             sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
             if (button->overlaps(floatPosition)) {
@@ -30,10 +31,16 @@ void MenuInput::mouseClick(sf::Event event) {
 
 void MenuInput::mouseMovement(sf::Event event) {
     auto buttons = this->state->getButtons();
-    auto position = sf::Mouse::getPosition(this->state->engine->window);
+    auto position = this->state->engine->window.mapPixelToCoords(
+        sf::Mouse::getPosition(this->state->engine->window));
     for (auto &button : buttons) {
         sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
         if (button->overlaps(floatPosition)) {
+            // LOG(INFO) << "--------";
+            // LOG(INFO) << floatPosition.x;
+            // LOG(INFO) << button->getPosition().x;
+            //
+            // LOG(INFO) << "Overlaps";
             this->state->setSelectedItem(button->name);
         }
     }
@@ -57,9 +64,8 @@ void MenuInput::keyInput(sf::Event event) {
     return;
 }
 
-void MenuInput::closeWindow(sf::Event event) {
-    this->state->engine->window.close();
-    LOG(INFO) << "Closing window.";
+void MenuInput::onResize(sf::Event event) {
+    this->state->resizeViews(event.size.width, event.size.height);
     return;
 }
 }

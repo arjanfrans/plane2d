@@ -18,6 +18,9 @@ public:
     std::shared_ptr<Engine> engine;
     virtual void update(const float dt) = 0;
     std::shared_ptr<Config> config;
+    void onExit();
+
+private:
 };
 }
 

@@ -30,6 +30,7 @@ public:
     void moveDown();
     void select();
     void setSelectedItem(std::string);
+    void resizeViews(float width, float height);
     int selectedItemIndex;
     std::string selectedItem;
     std::vector<std::shared_ptr<ui::Button>> getButtons();

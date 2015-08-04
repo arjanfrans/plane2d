@@ -3,11 +3,13 @@ logs
 log
 bin
 
+
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
+*.pyc
 
 # Precompiled Headers
 *.gch
