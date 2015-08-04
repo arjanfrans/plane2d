@@ -10,8 +10,29 @@
 
 namespace pl {
 Engine::Engine(std::shared_ptr<Config> config) : config{config}, windowScale{sf::Vector2f(0, 0)} {
-    auto title = this->config->get("game")["title"].as<std::string>();
-    this->window.create(sf::VideoMode(800, 600), title);
+    auto gameConfig = config->get("game");
+    auto title = gameConfig["title"].as<std::string>();
+    bool fullscreen = gameConfig["fullscreen"].as<bool>();
+    auto width = gameConfig["width"].as<unsigned int>();
+    auto height = gameConfig["height"].as<unsigned int>();
+    sf::VideoMode videoMode{width, height};
+    auto desktopMode = sf::VideoMode::getDesktopMode();
+    if(width > desktopMode.width || height > desktopMode.height) {
+        videoMode.width = 800;
+        videoMode.height = 600;
+        LOG(WARNING) << "VideoMode too large for screen, falling back to default.";
+    }
+
+    if (fullscreen && !videoMode.isValid()) {
+        videoMode = desktopMode;
+        LOG(WARNING) << "Invalid fullscreen VideoMode, falling back to desktop mode.";
+    }
+
+    if (fullscreen) {
+        this->window.create(videoMode, title, sf::Style::Fullscreen);
+    } else {
+        this->window.create(videoMode, title);
+    }
     this->window.setFramerateLimit(60);
 }
 
