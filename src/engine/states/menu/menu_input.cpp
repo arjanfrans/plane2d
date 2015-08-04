@@ -36,7 +36,6 @@ void MenuInput::mouseMovement(sf::Event event) {
     for (auto &button : buttons) {
         sf::Vector2f floatPosition{static_cast<float>(position.x), static_cast<float>(position.y)};
         if (button->overlaps(floatPosition)) {
-            LOG(INFO) << "Overlaps";
             this->state->setSelectedItem(button->name);
         }
     }

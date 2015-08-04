@@ -9,10 +9,10 @@ namespace pl {
 namespace ui {
 
 Button::Button(std::string value, sf::Vector2f position, std::string name,
-               std::shared_ptr<sf::Font> font, sf::Color color, sf::Color activeColor, int size)
-    : name{name}, font{font}, active{false}, color{color}, activeColor{activeColor} {
+               sf::Font& font, sf::Color color, sf::Color activeColor, int size)
+    : name{name}, active{false}, color{color}, activeColor{activeColor} {
     this->text.setString(value);
-    this->text.setFont(*this->font);
+    this->text.setFont(font);
     this->text.setColor(this->color);
     this->text.setPosition(position);
     this->text.setCharacterSize(static_cast<int>(size));

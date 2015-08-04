@@ -19,11 +19,11 @@ public:
     void resize(float width, float height);
     void draw(sf::RenderWindow &window);
     std::vector<std::shared_ptr<ui::Button>> buttons;
-
     sf::View fixedView;
+    sf::Sprite background;
 
 private:
-    std::shared_ptr<sf::Font> font;
+    void createBackground();
     void createButtons();
 };
 }

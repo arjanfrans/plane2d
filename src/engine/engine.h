@@ -9,6 +9,7 @@
 
 #include "config.h"
 #include "states/state.h"
+#include "resource_manager.h"
 
 namespace pl {
 
@@ -29,6 +30,7 @@ public:
     bool fullscreen;
     void changeFullscreen(); 
     void changeWindow(unsigned int width, unsigned int height, bool fullscreen); 
+    ResourceManager resources;
 
 private:
 };

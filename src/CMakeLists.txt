@@ -15,6 +15,7 @@ include_directories(
 # add_executable(${PROJECT_NAME} ${project_SRC})
 add_executable(${PROJECT_NAME} 
     engine/config.cpp
+    engine/resource_manager.cpp
     engine/input/input.cpp
     engine/states/state.cpp
     engine/engine.cpp

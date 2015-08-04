@@ -2,6 +2,8 @@ font:
     name: "font.ttf"
     size: 30
 
+background: "background.png"
+
 buttons:
     color: [255, 0, 0] 
     activeColor: [0, 255, 0]
