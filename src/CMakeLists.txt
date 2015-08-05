@@ -18,8 +18,11 @@ add_executable(${PROJECT_NAME}
     engine/resource_manager.cpp
     engine/engine.cpp
     engine/input/input.cpp
+
+    engine/input/global_input.cpp
     engine/states/state.cpp
     engine/states/world/world_state.cpp
+    engine/states/world/world_input.cpp
     engine/states/world/world_view.cpp
     engine/states/menu/menu_state.cpp
     engine/states/menu/menu_input.cpp

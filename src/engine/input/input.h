@@ -6,19 +6,15 @@
 
 namespace pl {
 
+class Engine;
 class Input {
 
 public:
     Input(std::shared_ptr<Engine> engine);
-    void update(sf::Event event);
+    virtual bool update(sf::Event event) = 0;
+    std::shared_ptr<Engine> engine;
 
 private:
-    std::shared_ptr<Engine> engine;
-    virtual void keyInput(sf::Event) = 0;
-    virtual void mouseClick(sf::Event) = 0;
-    virtual void mouseMovement(sf::Event) = 0;
-    virtual void closeWindow(sf::Event event);
-    virtual void onResize(sf::Event event) = 0;
 };
 }
 

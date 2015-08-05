@@ -1,5 +1,5 @@
-#ifndef STATE_MANAGER_H_
-#define STATE_MANAGER_H_
+#ifndef ENGINE_H
+#define ENGINE_H
 
 #include <memory>
 #include <stack>
@@ -9,8 +9,11 @@
 #include "config.h"
 #include "states/state.h"
 #include "resource_manager.h"
+// #include "input/global_input.h"
 
 namespace pl {
+
+class GlobalInput;
 
 class State;
 
@@ -27,11 +30,14 @@ public:
     std::shared_ptr<State> peekState();
     sf::RenderWindow window;
     bool fullscreen;
-    void changeFullscreen(); 
-    void changeWindow(unsigned int width, unsigned int height, bool fullscreen); 
+    void changeFullscreen();
+    void changeWindow(unsigned int width, unsigned int height, bool fullscreen);
     ResourceManager resources;
+    void setGlobalInput(std::unique_ptr<GlobalInput> input);
 
 private:
+    std::unique_ptr<GlobalInput> globalInput;
+    void eventLoop(std::shared_ptr<State> state);
 };
 }
 

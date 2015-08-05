@@ -86,7 +86,6 @@ void MenuState::select() {
 }
 
 void MenuState::update(const float dt) {
-    updateInputs();
     updateViews();
     return;
 }
@@ -101,15 +100,9 @@ std::vector<std::shared_ptr<ui::Button>> MenuState::getButtons() {
     return buttons;
 }
 
-void MenuState::updateInputs() {
-    if (this->inputs.size() > 0) {
-        sf::Event event;
-
-        while (this->engine->window.pollEvent(event)) {
-            for (auto &input : this->inputs) {
-                input.update(event);
-            }
-        }
+void MenuState::updateInput(sf::Event event) {
+    for (auto &input : this->inputs) {
+        input.update(event);
     }
     return;
 }

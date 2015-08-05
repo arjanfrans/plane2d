@@ -17,6 +17,7 @@ public:
     State(std::shared_ptr<Engine> engine);
     std::shared_ptr<Engine> engine;
     virtual void update(const float dt) = 0;
+    virtual void updateInput(sf::Event event) = 0;
     std::shared_ptr<Config> config;
     void onExit();
 

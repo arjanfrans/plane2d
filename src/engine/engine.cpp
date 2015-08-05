@@ -6,16 +6,21 @@
 #include "engine.h"
 #include "config.h"
 #include "states/state.h"
+#include "input/global_input.h"
 
 #include "utils/logger.h"
 
 namespace pl {
-Engine::Engine(std::shared_ptr<Config> config) : config{config} {
+Engine::Engine(std::shared_ptr<Config> config) : config{config}, globalInput{nullptr} {
     auto gameConfig = this->config->get("game");
     this->fullscreen = this->config->get("game")["fullscreen"].as<bool>();
     auto width = gameConfig["width"].as<unsigned int>();
     auto height = gameConfig["height"].as<unsigned int>();
     changeWindow(width, height, this->fullscreen);
+}
+
+void Engine::setGlobalInput(std::unique_ptr<GlobalInput> input) {
+    this->globalInput = std::move(input);
 }
 
 void Engine::changeFullscreen() {
@@ -57,16 +62,33 @@ void Engine::changeWindow(unsigned int width, unsigned int height, bool fullscre
 }
 
 void Engine::loop() {
+    if (this->globalInput == nullptr) {
+        LOG(FATAL) << "No global input.";
+    }
     LOG(INFO) << "Start game loop.";
     sf::Clock clock;
 
     while (this->window.isOpen()) {
         sf::Time elapsed = clock.restart();
         float dt = elapsed.asSeconds();
+        eventLoop(peekState());
         if (peekState() != nullptr) {
             this->window.clear(sf::Color::Black);
             peekState()->update(dt);
             this->window.display();
+        }
+    }
+    return;
+}
+
+void Engine::eventLoop(std::shared_ptr<State> state) {
+    sf::Event event;
+    while (this->window.pollEvent(event)) {
+        // Do not update state input if there is a global input.
+        if (!this->globalInput->update(event)) {
+            if (state != nullptr) {
+                state->updateInput(event);
+            }
         }
     }
     return;

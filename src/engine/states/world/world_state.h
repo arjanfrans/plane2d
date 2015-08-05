@@ -8,23 +8,25 @@
 #include "../../input/input.h"
 #include "../../engine.h"
 #include "world_view.h"
+#include "world_input.h"
 
 namespace pl {
 
 class WorldView;
+class WorldInput;
 
 class WorldState : public State {
 
 public:
     WorldState(std::shared_ptr<Engine> engine);
-    // void setInputs(std::vector<Input> inputs);
+    void setInputs(std::vector<WorldInput> inputs);
     void setViews(std::vector<WorldView> view);
     void update(const float dt);
+    void updateInput(sf::Event event);
 
 private:
-    // std::vector<MenuInput> inputs;
+    std::vector<WorldInput> inputs;
     std::vector<WorldView> views;
-    // void updateInputs();
     void updateViews();
 };
 }

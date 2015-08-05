@@ -4,6 +4,7 @@
 #include "config.h"
 #include "engine.h"
 #include "game.h"
+#include "input/global_input.h"
 #include "utils/logger.h"
 
 INITIALIZE_LOGGER
@@ -14,6 +15,7 @@ Game::Game() : engine{nullptr} {
     config->load();
     this->config = config;
     this->engine = std::make_shared<Engine>(this->config);
+    this->engine->setGlobalInput(std::unique_ptr<GlobalInput>{new GlobalInput{this->engine}});
 }
 void Game::start() {
     createStates();

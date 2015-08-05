@@ -35,11 +35,10 @@ public:
     int selectedItemIndex;
     std::string selectedItem;
     std::vector<std::shared_ptr<ui::Button>> getButtons();
-
+    void updateInput(sf::Event event);
 private:
     std::vector<MenuInput> inputs;
     std::vector<MenuView> views;
-    void updateInputs();
     void updateViews();
     void onStart();
     void onOptions();
