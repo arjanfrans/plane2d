@@ -16,14 +16,17 @@ include_directories(
 add_executable(${PROJECT_NAME} 
     engine/config.cpp
     engine/resource_manager.cpp
+    engine/engine.cpp
     engine/input/input.cpp
     engine/states/state.cpp
-    engine/engine.cpp
-    engine/states/menu/menu_input.cpp
+    engine/states/world/world_state.cpp
+    engine/states/world/world_view.cpp
     engine/states/menu/menu_state.cpp
+    engine/states/menu/menu_input.cpp
     engine/states/menu/menu_view.cpp
     engine/ui/mouse_listener.cpp
     engine/ui/button.cpp
+    engine/states/state_builder.cpp
     engine/game.cpp
     plane.cpp
     main.cpp

@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "engine.h"
+#include "config.h"
 #include "states/state.h"
 
 #include "utils/logger.h"

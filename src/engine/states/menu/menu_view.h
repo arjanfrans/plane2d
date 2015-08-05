@@ -4,12 +4,12 @@
 #include <memory>
 #include <string>
 
-#include "menu_state.h"
 #include "../../ui/button.h"
 
 namespace pl {
 
 class MenuState;
+#include "menu_state.h"
 
 class MenuView {
 

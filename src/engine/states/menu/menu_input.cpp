@@ -3,11 +3,13 @@
 #include <SFML/Graphics.hpp>
 
 #include "menu_input.h"
-#include "menu_state.h"
 
 #include "../../utils/logger.h"
 
 namespace pl {
+
+class MenuState;
+#include "menu_state.h"
 
 MenuInput::MenuInput(std::shared_ptr<MenuState> state) : Input(state->engine), state{state} {
 }

@@ -2,3 +2,4 @@ title: "plane2d"
 width: 800
 height: 600
 fullscreen: false
+background: "commercial.png"

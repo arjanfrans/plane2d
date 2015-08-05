@@ -2,7 +2,6 @@
 #define INPUT_INPUT_H
 
 #include <SFML/Graphics.hpp>
-#include "../states/state.h"
 #include "../engine.h"
 
 namespace pl {

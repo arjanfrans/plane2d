@@ -6,7 +6,6 @@
 #include "yaml-cpp/yaml.h"
 #include <boost/filesystem.hpp>
 #include <boost/regex.hpp>
-#include <iostream>
 
 #include "utils/logger.h"
 
@@ -17,6 +16,7 @@ void Config::load() {
     // TODO If C++ supports filesystem, implement that instead of boost
 
     // auto path = "data/config/";
+
     boost::filesystem::path path = boost::filesystem::current_path() / "data/config/";
     auto cwd = boost::filesystem::canonical(path).string();
     LOG(INFO) << "Cwd: " + cwd;

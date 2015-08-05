@@ -4,10 +4,12 @@
 
 #include "menu_input.h"
 #include "menu_state.h"
+#include "menu_view.h"
 
 #include "../state.h"
 #include "../../engine.h"
 #include "../../ui/button.h"
+#include "../state_builder.h"
 
 #include "../../utils/logger.h"
 
@@ -19,9 +21,8 @@ MenuState::MenuState(std::shared_ptr<Engine> engine) : State(engine), selectedIt
     this->items = {"Start", "Options", "Exit"};
 }
 
-
 void MenuState::resizeViews(float width, float height) {
-    for(auto& view : this->views) {
+    for (auto &view : this->views) {
         view.resize(width, height);
     }
     return;
@@ -60,7 +61,7 @@ void MenuState::setSelectedItem(std::string key) {
 }
 
 void MenuState::onStart() {
-    LOG(WARNING) << "Not implemented.";
+    this->engine->pushState(StateBuilder::worldState(this->engine));
     return;
 };
 

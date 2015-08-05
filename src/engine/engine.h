@@ -2,7 +2,6 @@
 #define STATE_MANAGER_H_
 
 #include <memory>
-#include <vector>
 #include <stack>
 
 #include <SFML/Graphics.hpp>

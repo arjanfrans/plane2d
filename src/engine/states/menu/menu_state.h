@@ -8,9 +8,10 @@
 #include "../state.h"
 
 #include "../../config.h"
+
+#include "../../ui/button.h"
 #include "menu_input.h"
 #include "menu_view.h"
-#include "../../ui/button.h"
 
 namespace pl {
 class MenuInput;
