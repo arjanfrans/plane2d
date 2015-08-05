@@ -16,6 +16,7 @@ public:
 private:
     void closeWindow();
     bool keyInput(sf::Keyboard::Key code);
+    void onResize(sf::Event event);
 };
 }
 #endif

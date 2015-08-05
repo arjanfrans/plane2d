@@ -15,13 +15,13 @@
 
 namespace pl {
 
-MenuState::MenuState(std::shared_ptr<Engine> engine) : State(engine), selectedItemIndex{0} {
+MenuState::MenuState(std::shared_ptr<Engine> engine) : State{engine}, selectedItemIndex{0} {
     // Parallel arrays
     this->itemKeys = {"start", "options", "exit"};
     this->items = {"Start", "Options", "Exit"};
 }
 
-void MenuState::resizeViews(float width, float height) {
+void MenuState::resizeWindow(float width, float height) {
     for (auto &view : this->views) {
         view.resize(width, height);
     }

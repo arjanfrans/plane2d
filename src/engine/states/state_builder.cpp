@@ -14,7 +14,9 @@ namespace pl {
 std::shared_ptr<MenuState> StateBuilder::menuState(std::shared_ptr<Engine> engine) {
     auto menuState = std::make_shared<MenuState>(engine);
     std::vector<MenuInput> inputs{MenuInput{menuState}};
-    std::vector<MenuView> views{MenuView{menuState}};
+    auto config = engine->config->get("menu");
+    std::vector<MenuView> views{
+        MenuView{menuState, config["virtualWidth"].as<float>(), config["virtualHeight"].as<float>()}};
     menuState->setInputs(inputs);
     menuState->setViews(views);
     return menuState;
@@ -23,7 +25,9 @@ std::shared_ptr<MenuState> StateBuilder::menuState(std::shared_ptr<Engine> engin
 std::shared_ptr<WorldState> StateBuilder::worldState(std::shared_ptr<Engine> engine) {
     auto worldState = std::make_shared<WorldState>(engine);
     std::vector<WorldInput> inputs{WorldInput{worldState}};
-    std::vector<WorldView> views{WorldView{worldState}};
+    auto config = engine->config->get("game");
+    std::vector<WorldView> views{
+        WorldView{worldState, config["virtualWidth"].as<float>(), config["virtualHeight"].as<float>()}};
     worldState->setInputs(inputs);
     worldState->setViews(views);
     return worldState;

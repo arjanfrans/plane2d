@@ -1,5 +1,7 @@
 title: "plane2d"
 width: 800
 height: 600
+virtualWidth: 800
+virtualHeight: 600
 fullscreen: false
-background: "commercial.png"
+background: "earth.jpg"

@@ -16,7 +16,6 @@ class MenuInput : public Input {
 
 public:
     MenuInput(std::shared_ptr<MenuState> state);
-    void onResize(sf::Event event);
     bool update(sf::Event event);
 
 private:

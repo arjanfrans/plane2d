@@ -19,8 +19,4 @@ bool WorldInput::update(sf::Event event) {
     }
 }
 
-// void WorldInput::onResize(sf::Event event) {
-//     this->state->resizeViews(event.size.width, event.size.height);
-//     return;
-// }
 }

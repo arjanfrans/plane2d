@@ -1,5 +1,4 @@
-#ifndef STATES_STATE_H
-#define STATES_STATE_H
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -18,6 +17,7 @@ public:
     std::shared_ptr<Engine> engine;
     virtual void update(const float dt) = 0;
     virtual void updateInput(sf::Event event) = 0;
+    virtual void resizeWindow(float x, float y) = 0;
     std::shared_ptr<Config> config;
     void onExit();
 
@@ -25,4 +25,3 @@ private:
 };
 }
 
-#endif

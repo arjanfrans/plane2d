@@ -14,15 +14,21 @@ bool GlobalInput::update(sf::Event event) {
         case sf::Event::Closed:
             closeWindow();
             return true;
-        // case sf::Event::Resized:
-        //     onResize(event);
-        //     break;
+        case sf::Event::Resized:
+            onResize(event);
+            return true;
         case sf::Event::KeyPressed:
             return keyInput(event.key.code);
         default:
             return false;
     }
 }
+
+void GlobalInput::onResize(sf::Event event) {
+    this->engine->peekState()->resizeWindow(event.size.width, event.size.height);
+    return;
+}
+
 void GlobalInput::closeWindow() {
     this->engine->window.close();
     LOG(INFO) << "Closing window.";

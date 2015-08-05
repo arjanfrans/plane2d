@@ -21,9 +21,6 @@ bool MenuInput::update(sf::Event event) {
     }
 
     switch (event.type) {
-        case sf::Event::Resized:
-            onResize(event);
-            return true;
         case sf::Event::KeyPressed:
             return keyInput(event);
         case sf::Event::MouseButtonPressed:
@@ -80,10 +77,5 @@ bool MenuInput::keyInput(sf::Event event) {
         default:
             return false;
     }
-}
-
-void MenuInput::onResize(sf::Event event) {
-    this->state->resizeViews(event.size.width, event.size.height);
-    return;
 }
 }

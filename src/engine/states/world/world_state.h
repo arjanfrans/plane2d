@@ -23,6 +23,7 @@ public:
     void setViews(std::vector<WorldView> view);
     void update(const float dt);
     void updateInput(sf::Event event);
+    void resizeWindow(float width, float height);
 
 private:
     std::vector<WorldInput> inputs;

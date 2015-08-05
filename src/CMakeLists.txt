@@ -17,8 +17,8 @@ add_executable(${PROJECT_NAME}
     engine/config.cpp
     engine/resource_manager.cpp
     engine/engine.cpp
+    engine/states/view.cpp
     engine/input/input.cpp
-
     engine/input/global_input.cpp
     engine/states/state.cpp
     engine/states/world/world_state.cpp

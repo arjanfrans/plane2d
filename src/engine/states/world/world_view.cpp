@@ -2,11 +2,16 @@
 
 namespace pl {
 
-WorldView::WorldView(std::shared_ptr<WorldState> state) : state{state} {
+WorldView::WorldView(std::shared_ptr<WorldState> state, float width, float height)
+    : View{width, height}, state{state} {
     this->fixedView = this->state->engine->window.getView();
     createBackground();
 }
 
+void WorldView::resize(float width, float height) {
+    this->fixedView.setViewport(this->virtualResolutionViewport(width, height));
+    return;
+}
 
 void WorldView::createBackground() {
     auto config = this->state->config->get("game");
@@ -16,7 +21,6 @@ void WorldView::createBackground() {
     this->background.setPosition(0, 0);
     return;
 }
-
 
 void WorldView::draw(sf::RenderWindow &window) {
     window.setView(this->fixedView);

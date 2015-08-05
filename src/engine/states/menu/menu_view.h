@@ -1,20 +1,19 @@
-#ifndef MENU_VIEW_H
-#define MENU_VIEW_H
+#pragma once
 
 #include <memory>
-#include <string>
 
+#include "menu_state.h"
 #include "../../ui/button.h"
 
+#include "../view.h"
 namespace pl {
 
 class MenuState;
-#include "menu_state.h"
 
-class MenuView {
+class MenuView : public View {
 
 public:
-    MenuView(std::shared_ptr<MenuState> state);
+    MenuView(std::shared_ptr<MenuState> state, float width, float height);
     std::shared_ptr<MenuState> state;
     void resize(float width, float height);
     void draw(sf::RenderWindow &window);
@@ -27,5 +26,3 @@ private:
     void createButtons();
 };
 }
-
-#endif

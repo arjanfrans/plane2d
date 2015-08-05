@@ -3,7 +3,8 @@ font:
     size: 30
 
 background: "background.png"
-
+virtualWidth: 800
+virtualHeight: 600
 buttons:
     color: [255, 0, 0] 
     activeColor: [0, 255, 0]
