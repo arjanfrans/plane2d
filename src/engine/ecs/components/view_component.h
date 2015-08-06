@@ -5,8 +5,7 @@ namespace pl {
 
 class ViewComponent {
 
-    private:
-        sf::Sprite sprite;
+private:
+    sf::Sprite sprite;
 };
-
 }

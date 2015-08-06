@@ -7,6 +7,6 @@ namespace pl {
 class InputComponent {
 
 public:
-    bool checkInput(sf::Event input);
+    virtual bool checkInput(sf::Event input) = 0;
 };
 }

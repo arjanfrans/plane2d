@@ -8,11 +8,11 @@ namespace pl {
 
 class Controllable {
 public:
-    void setInputComponent(InputComponent view);
-    InputComponent getInputComponent();
-    void updateInput(sf::Event event);
+    void setInputComponent(InputComponent inputComponent);
+    const InputComponent &getInputComponent();
+    bool updateInput(sf::Event event);
 
 private:
-    InputComponent view;
+    InputComponent inputComponent;
 };
 }

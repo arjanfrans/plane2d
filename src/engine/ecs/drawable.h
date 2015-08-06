@@ -10,7 +10,6 @@ class Drawable {
 public:
     void setViewComponent(ViewComponent view);
     ViewComponent getViewComponent();
-    virtual void draw();
 
 private:
     ViewComponent view;
