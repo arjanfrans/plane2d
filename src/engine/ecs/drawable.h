@@ -9,7 +9,7 @@ class Drawable {
 
 public:
     void setViewComponent(ViewComponent view);
-    ViewComponent getViewComponent();
+    const ViewComponent &getViewComponent();
 
 private:
     ViewComponent view;

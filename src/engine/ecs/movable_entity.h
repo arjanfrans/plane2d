@@ -1,14 +1,15 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "entity.h"
 
 namespace pl {
-class Movable {
+class MovableEntity : public Entity {
 
 public:
     void move(float dt);
     void setVelocity(float x, float y);
-    sf::Vector2f getVelocity();
+    const sf::Vector2f &getVelocity();
 
 private:
     sf::Vector2f velocity;

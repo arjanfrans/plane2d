@@ -8,7 +8,7 @@ class Entity {
 
 public:
     void setSize(float width, float height);
-    const sf::Vector2f &getsize();
+    const sf::Vector2f &getSize();
     void setPosition(float x, float y);
     const sf::Vector2f &getPosition();
     void setOrigin(float x, float y);
