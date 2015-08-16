@@ -11,7 +11,7 @@
 #include "utils/logger.h"
 
 namespace pl {
-Engine::Engine(std::shared_ptr<Config> config) : config{config}, globalInput{nullptr} {
+Engine::Engine(std::shared_ptr<Config> config) : config{config}, globalInput{nullptr}, entityBuilder{shared_from_this()} {
     auto gameConfig = this->config->get("game");
     this->fullscreen = this->config->get("game")["fullscreen"].as<bool>();
     auto width = gameConfig["width"].as<unsigned int>();

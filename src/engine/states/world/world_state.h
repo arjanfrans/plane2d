@@ -9,6 +9,7 @@
 #include "../../engine.h"
 #include "world_view.h"
 #include "world_input.h"
+#include "../../ecs/entity.h"
 
 namespace pl {
 
@@ -24,6 +25,8 @@ public:
     void update(const float dt);
     void updateInput(sf::Event event);
     void resizeWindow(float width, float height);
+    void addEntity(std::unique_ptr<Entity> entity);
+    std::vector<std::unique_ptr<Entity>> entities;
 
 private:
     std::vector<WorldInput> inputs;

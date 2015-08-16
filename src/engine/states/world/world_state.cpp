@@ -40,4 +40,8 @@ void WorldState::updateInput(sf::Event event) {
     }
     return;
 }
+
+void WorldState::addEntity(std::unique_ptr<Entity> entity) {
+    this->entities.push_back(std::move(entity));
+}
 }

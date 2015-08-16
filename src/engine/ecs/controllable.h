@@ -7,6 +7,7 @@
 namespace pl {
 
 class Controllable {
+
 public:
     void setInputComponent(InputComponent inputComponent);
     const InputComponent &getInputComponent();

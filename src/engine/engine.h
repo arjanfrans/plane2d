@@ -9,7 +9,9 @@
 #include "config.h"
 #include "states/state.h"
 #include "resource_manager.h"
-// #include "input/global_input.h"
+#include "input/global_input.h"
+#include "states/state_builder.h"
+#include "ecs/entity_builder.h"
 
 namespace pl {
 
@@ -17,7 +19,7 @@ class GlobalInput;
 
 class State;
 
-class Engine {
+class Engine : public std::enable_shared_from_this<Engine> {
 
 public:
     Engine(std::shared_ptr<Config> config);
@@ -33,6 +35,8 @@ public:
     void changeFullscreen();
     void changeWindow(unsigned int width, unsigned int height, bool fullscreen);
     ResourceManager resources;
+    StateBuilder stateBuilder;
+    EntityBuilder entityBuilder;
     void setGlobalInput(std::unique_ptr<GlobalInput> input);
 
 private:

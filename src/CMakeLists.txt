@@ -17,6 +17,15 @@ add_executable(${PROJECT_NAME}
     engine/config.cpp
     engine/resource_manager.cpp
     engine/engine.cpp
+    engine/ecs/components/input_component.cpp
+    engine/ecs/components/view_component.cpp
+    engine/ecs/components/input/player_input.cpp
+    engine/ecs/components/view/player_view.cpp
+    engine/ecs/controllable.cpp
+    engine/ecs/drawable.cpp
+    engine/ecs/entity.cpp
+    engine/ecs/movable_entity.cpp
+    # engine/ecs/player.cpp
     engine/states/view.cpp
     engine/input/input.cpp
     engine/input/global_input.cpp

@@ -7,5 +7,7 @@
 
 namespace pl {
 
-class Player : public MovableEntity, public Drawable, public Controllable {};
+class Player : public MovableEntity, public Controllable {
+// , public Drawable,
+};
 }
