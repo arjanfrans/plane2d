@@ -39,11 +39,11 @@ public:
     std::shared_ptr<StateBuilder> getStateBuilder();
     std::shared_ptr<EntityBuilder> getEntityBuilder();
     void setGlobalInput(std::unique_ptr<GlobalInput> input);
+    std::shared_ptr<EntityBuilder> entityBuilder;
+    std::shared_ptr<StateBuilder> stateBuilder;
 
 private:
     std::unique_ptr<GlobalInput> globalInput;
     void eventLoop(std::shared_ptr<State> state);
-    std::shared_ptr<EntityBuilder> entityBuilder;
-    std::shared_ptr<StateBuilder> stateBuilder;
 };
 }

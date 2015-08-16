@@ -4,9 +4,10 @@
 
 #include "menu/menu_state.h"
 #include "world/world_state.h"
-#include "../engine.h"
 
 namespace pl {
+
+class Engine;
 
 class StateBuilder {
 

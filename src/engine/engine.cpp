@@ -2,6 +2,7 @@
 #include "utils/logger.h"
 #include "states/state.h"
 #include "input/global_input.h"
+
 #include "ecs/entity_builder.h"
 #include "states/state_builder.h"
 
@@ -109,19 +110,5 @@ void Engine::changeState(std::string name) {
     return;
 }
 
-void Engine::setStateBuilder(std::shared_ptr<StateBuilder> builder) {
-    this->stateBuilder = builder;
-}
 
-void Engine::setEntityBuilder(std::shared_ptr<EntityBuilder> builder) {
-    this->entityBuilder = builder;
-}
-
-std::shared_ptr<StateBuilder> Engine::getStateBuilder() {
-    return this->stateBuilder;
-}
-
-std::shared_ptr<EntityBuilder> Engine::getEntityBuilder() {
-    return this->entityBuilder;
-}
 }

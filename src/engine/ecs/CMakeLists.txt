@@ -7,5 +7,6 @@ set(ENGINE_ECS_SOURCES
     engine/ecs/drawable.cpp
     engine/ecs/entity.cpp
     engine/ecs/movable_entity.cpp
+    engine/ecs/entity_builder.cpp
     PARENT_SCOPE
 )

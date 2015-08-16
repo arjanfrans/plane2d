@@ -1,4 +1,5 @@
 #include "entity_builder.h"
+#include "components/view_component.h"
 
 namespace pl {
 

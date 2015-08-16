@@ -1,7 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-
+#include <memory>
 #include "components/view_component.h"
 
 namespace pl {

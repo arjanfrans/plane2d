@@ -2,18 +2,14 @@
 
 void Plane::createStates() {
     createGameState();
-    auto &stateBuilder = this->engine->getStateBuilder();
-    this->engine->addState("menu", stateBuilder->menuState());
+    this->engine->addState("menu", this->stateBuilder->menuState());
     this->engine->changeState("menu");
 }
 
 void Plane::createGameState() {
-    auto &stateBuilder = this->engine->getStateBuilder();
-    auto gameState = stateBuilder.worldState();
+    auto gameState = this->stateBuilder->worldState();
 
-    auto &entityBuilder = this->engine->getEntityBuilder();
-    auto player = entityBuilder.player();
+    auto player = this->entityBuilder->player();
 
-    // gameState->addEntity();
     this->engine->addState("world", gameState);
 }
