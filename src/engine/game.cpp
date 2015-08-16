@@ -13,11 +13,12 @@ Game::Game() : engine{nullptr} {
     this->config = config;
 
     this->engine = std::make_shared<Engine>(this->config);
-    auto stateBuilder = std::unique_ptr<StateBuilder>{new StateBuilder{this->engine}};
 
-    this->engine->setStateBuilder(std::move(stateBuilder));
-    // EntityBuilder entityBuilder{this->engine};
-    // this->engine->setEntityBuilder(std::move(entityBuilder));
+    auto stateBuilder = std::make_shared<StateBuilder>(this->engine);
+    this->engine->setStateBuilder(stateBuilder);
+
+    auto entityBuilder = std::make_shared<EntityBuilder>(this->engine);
+    this->engine->setEntityBuilder(entityBuilder);
 
     this->engine->setGlobalInput(std::unique_ptr<GlobalInput>{new GlobalInput{this->engine}});
     LOG(INFO) << "Working";

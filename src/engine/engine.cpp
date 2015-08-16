@@ -1,13 +1,14 @@
 #include "engine.h"
 #include "utils/logger.h"
 #include "states/state.h"
-#include "states/state_builder.h"
 #include "input/global_input.h"
 #include "ecs/entity_builder.h"
 #include "states/state_builder.h"
 
 namespace pl {
-Engine::Engine(std::shared_ptr<Config> config) : config{config}, globalInput{nullptr}, entityBuilder{nullptr}, stateBuilder{nullptr} {
+
+Engine::Engine(std::shared_ptr<Config> config)
+    : config{config}, globalInput{nullptr}, entityBuilder{nullptr}, stateBuilder{nullptr} {
     auto gameConfig = this->config->get("game");
     this->fullscreen = this->config->get("game")["fullscreen"].as<bool>();
     auto width = gameConfig["width"].as<unsigned int>();
@@ -102,25 +103,25 @@ void Engine::removeState(std::string name) {
 
 void Engine::changeState(std::string name) {
     auto state = this->states.find(name);
-    if(state != this->states.end()) {
-        this->currentState = state->second; 
+    if (state != this->states.end()) {
+        this->currentState = state->second;
     }
     return;
 }
 
-void Engine::setStateBuilder(std::unique_ptr<StateBuilder> builder) {
-    this->stateBuilder = std::move(builder);
+void Engine::setStateBuilder(std::shared_ptr<StateBuilder> builder) {
+    this->stateBuilder = builder;
 }
 
-void Engine::setEntityBuilder(std::unique_ptr<EntityBuilder> builder) {
-    this->entityBuilder = std::move(builder);
+void Engine::setEntityBuilder(std::shared_ptr<EntityBuilder> builder) {
+    this->entityBuilder = builder;
 }
 
-const StateBuilder& Engine::getStateBuilder() {
-    return *this->stateBuilder;
+std::shared_ptr<StateBuilder> Engine::getStateBuilder() {
+    return this->stateBuilder;
 }
 
-const EntityBuilder& Engine::getEntityBuilder() {
-    return *this->entityBuilder;
+std::shared_ptr<EntityBuilder> Engine::getEntityBuilder() {
+    return this->entityBuilder;
 }
 }

@@ -34,16 +34,16 @@ public:
     void changeFullscreen();
     void changeWindow(unsigned int width, unsigned int height, bool fullscreen);
     ResourceManager resources;
-    void setStateBuilder(std::unique_ptr<StateBuilder> stateBuilder);
-    void setEntityBuilder(std::unique_ptr<EntityBuilder> entityBuilder);
-    const StateBuilder &getStateBuilder();
-    const EntityBuilder &getEntityBuilder();
+    void setStateBuilder(std::shared_ptr<StateBuilder> stateBuilder);
+    void setEntityBuilder(std::shared_ptr<EntityBuilder> entityBuilder);
+    std::shared_ptr<StateBuilder> getStateBuilder();
+    std::shared_ptr<EntityBuilder> getEntityBuilder();
     void setGlobalInput(std::unique_ptr<GlobalInput> input);
 
 private:
     std::unique_ptr<GlobalInput> globalInput;
     void eventLoop(std::shared_ptr<State> state);
-    std::unique_ptr<EntityBuilder> entityBuilder;
-    std::unique_ptr<StateBuilder> stateBuilder;
+    std::shared_ptr<EntityBuilder> entityBuilder;
+    std::shared_ptr<StateBuilder> stateBuilder;
 };
 }
