@@ -1,10 +1,4 @@
-#include <memory>
-
-#include <SFML/Graphics.hpp>
-
 #include "world_input.h"
-#include "../../input/input.h"
-
 #include "../../utils/logger.h"
 
 namespace pl {

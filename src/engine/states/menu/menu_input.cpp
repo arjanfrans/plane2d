@@ -1,15 +1,12 @@
 #include <memory>
 
-#include <SFML/Graphics.hpp>
-
 #include "menu_input.h"
-
-#include "../../utils/logger.h"
 #include "menu_state.h"
 
-namespace pl {
+#include "../../utils/logger.h"
+#include "../../ui/button.h"
 
-class MenuState;
+namespace pl {
 
 MenuInput::MenuInput(std::shared_ptr<MenuState> state) : Input(state->engine), state{state} {
 }

@@ -11,10 +11,13 @@
 
 namespace pl {
 
-std::shared_ptr<MenuState> StateBuilder::menuState(std::shared_ptr<Engine> engine) {
-    auto menuState = std::make_shared<MenuState>(engine);
+StateBuilder::StateBuilder(std::shared_ptr<Engine> engine) : engine{engine} {
+}
+
+std::shared_ptr<MenuState> StateBuilder::menuState() {
+    auto menuState = std::make_shared<MenuState>(this->engine);
     std::vector<MenuInput> inputs{MenuInput{menuState}};
-    auto config = engine->config->get("menu");
+    auto config = this->engine->config->get("menu");
     std::vector<MenuView> views{
         MenuView{menuState, config["virtualWidth"].as<float>(), config["virtualHeight"].as<float>()}};
     menuState->setInputs(inputs);
@@ -22,10 +25,10 @@ std::shared_ptr<MenuState> StateBuilder::menuState(std::shared_ptr<Engine> engin
     return menuState;
 }
 
-std::shared_ptr<WorldState> StateBuilder::worldState(std::shared_ptr<Engine> engine) {
-    auto worldState = std::make_shared<WorldState>(engine);
+std::shared_ptr<WorldState> StateBuilder::worldState() {
+    auto worldState = std::make_shared<WorldState>(this->engine);
     std::vector<WorldInput> inputs{WorldInput{worldState}};
-    auto config = engine->config->get("game");
+    auto config = this->engine->config->get("game");
     std::vector<WorldView> views{
         WorldView{worldState, config["virtualWidth"].as<float>(), config["virtualHeight"].as<float>()}};
     worldState->setInputs(inputs);

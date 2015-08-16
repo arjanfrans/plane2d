@@ -1,17 +1,7 @@
-#include <vector>
-#include <memory>
-#include <map>
-
-#include "menu_input.h"
 #include "menu_state.h"
-#include "menu_view.h"
-
-#include "../state.h"
-#include "../../engine.h"
-#include "../../ui/button.h"
-#include "../state_builder.h"
-
 #include "../../utils/logger.h"
+#include "menu_input.h"
+#include "menu_view.h"
 
 namespace pl {
 
@@ -61,7 +51,7 @@ void MenuState::setSelectedItem(std::string key) {
 }
 
 void MenuState::onStart() {
-    this->engine->pushState(StateBuilder::worldState(this->engine));
+    this->engine->changeState(this->engine->peekState());
     return;
 };
 

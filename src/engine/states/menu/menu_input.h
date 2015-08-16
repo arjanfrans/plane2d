@@ -1,11 +1,9 @@
-#ifndef INPUT_MENU_INPUT_H
-#define INPUT_MENU_INPUT_H
+#pragma once
 
 #include <memory>
 
 #include <SFML/Graphics.hpp>
 
-#include "menu_state.h"
 #include "../../input/input.h"
 
 namespace pl {
@@ -25,5 +23,3 @@ private:
     bool mouseMovement(sf::Event);
 };
 }
-
-#endif

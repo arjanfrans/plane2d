@@ -1,5 +1,4 @@
-#ifndef WORLD_INPUT_H
-#define WORLD_INPUT_H
+#pragma once
 
 #include <memory>
 
@@ -21,4 +20,3 @@ private:
     std::shared_ptr<WorldState> state;
 };
 }
-#endif

@@ -1,7 +1,4 @@
-#include <SFML/Graphics.hpp>
 #include "global_input.h"
-#include "input.h"
-#include "../engine.h"
 #include "../utils/logger.h"
 
 namespace pl {

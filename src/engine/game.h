@@ -1,5 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include <memory>
 
@@ -19,4 +18,3 @@ private:
     virtual void createStates() = 0;
 };
 }
-#endif

@@ -1,5 +1,4 @@
 #include "drawable.h"
-#include "components/view_component.h"
 
 namespace pl {
 

@@ -1,0 +1,11 @@
+set(ENGINE_ECS_SOURCES
+    engine/ecs/components/input_component.cpp
+    engine/ecs/components/view_component.cpp
+    engine/ecs/components/input/player_input.cpp
+    engine/ecs/components/view/player_view.cpp
+    engine/ecs/controllable.cpp
+    engine/ecs/drawable.cpp
+    engine/ecs/entity.cpp
+    engine/ecs/movable_entity.cpp
+    PARENT_SCOPE
+)

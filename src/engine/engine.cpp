@@ -1,17 +1,13 @@
-#include <memory>
-
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
-
 #include "engine.h"
-#include "config.h"
-#include "states/state.h"
-#include "input/global_input.h"
-
 #include "utils/logger.h"
+#include "states/state_builder.h"
+#include "input/global_input.h"
+#include "ecs/entity_builder.h"
+#include "states/state_builder.h"
+#include "states/state.h"
 
 namespace pl {
-Engine::Engine(std::shared_ptr<Config> config) : config{config}, globalInput{nullptr}, entityBuilder{shared_from_this()} {
+Engine::Engine(std::shared_ptr<Config> config) : config{config}, globalInput{nullptr}, entityBuilder{nullptr}, stateBuilder{nullptr} {
     auto gameConfig = this->config->get("game");
     this->fullscreen = this->config->get("game")["fullscreen"].as<bool>();
     auto width = gameConfig["width"].as<unsigned int>();
@@ -117,5 +113,21 @@ std::shared_ptr<State> Engine::peekState() {
         return nullptr;
     }
     return this->states.top();
+}
+
+void Engine::setStateBuilder(std::unique_ptr<StateBuilder> builder) {
+    this->stateBuilder = std::move(builder);
+}
+
+void Engine::setEntityBuilder(std::unique_ptr<EntityBuilder> builder) {
+    this->entityBuilder = std::move(builder);
+}
+
+const StateBuilder& Engine::getStateBuilder() {
+    return *this->stateBuilder;
+}
+
+const EntityBuilder& Engine::getEntityBuilder() {
+    return *this->entityBuilder;
 }
 }

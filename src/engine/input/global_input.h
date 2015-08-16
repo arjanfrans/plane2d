@@ -1,9 +1,9 @@
-#ifndef GLOBAL_INPUT_H
-#define GLOBAL_INPUT_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
-#include "input.h"
+
 #include "../engine.h"
+#include "input.h"
 
 namespace pl {
 
@@ -19,4 +19,3 @@ private:
     void onResize(sf::Event event);
 };
 }
-#endif

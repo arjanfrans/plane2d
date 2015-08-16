@@ -1,5 +1,4 @@
-#ifndef ENGINE_H
-#define ENGINE_H
+#pragma once
 
 #include <memory>
 #include <stack>
@@ -7,19 +6,18 @@
 #include <SFML/Graphics.hpp>
 
 #include "config.h"
-#include "states/state.h"
 #include "resource_manager.h"
-#include "input/global_input.h"
-#include "states/state_builder.h"
-#include "ecs/entity_builder.h"
+
 
 namespace pl {
 
 class GlobalInput;
 
 class State;
+class EntityBuilder;
+class StateBuilder;
 
-class Engine : public std::enable_shared_from_this<Engine> {
+class Engine {
 
 public:
     Engine(std::shared_ptr<Config> config);
@@ -35,14 +33,16 @@ public:
     void changeFullscreen();
     void changeWindow(unsigned int width, unsigned int height, bool fullscreen);
     ResourceManager resources;
-    StateBuilder stateBuilder;
-    EntityBuilder entityBuilder;
+    void setStateBuilder(std::unique_ptr<StateBuilder> stateBuilder);
+    void setEntityBuilder(std::unique_ptr<EntityBuilder> entityBuilder);
+    const StateBuilder &getStateBuilder();
+    const EntityBuilder &getEntityBuilder();
     void setGlobalInput(std::unique_ptr<GlobalInput> input);
 
 private:
     std::unique_ptr<GlobalInput> globalInput;
     void eventLoop(std::shared_ptr<State> state);
+    std::unique_ptr<StateBuilder> stateBuilder;
+    std::unique_ptr<EntityBuilder> entityBuilder;
 };
 }
-
-#endif

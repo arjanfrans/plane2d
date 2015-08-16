@@ -1,21 +1,20 @@
-#ifndef MENU_STATE_H
-#define MENU_STATE_H
+#pragma once
 
 #include <memory>
 #include <vector>
 
-#include "../../engine.h"
 #include "../state.h"
+#include "../../engine.h"
 
 #include "../../config.h"
 
 #include "../../ui/button.h"
-#include "menu_input.h"
-#include "menu_view.h"
+
 
 namespace pl {
 class MenuInput;
 class MenuView;
+
 enum class MenuItem { START, OPTIONS, EXIT };
 
 class MenuState : public State {
@@ -36,6 +35,7 @@ public:
     std::string selectedItem;
     std::vector<std::shared_ptr<ui::Button>> getButtons();
     void updateInput(sf::Event event);
+
 private:
     std::vector<MenuInput> inputs;
     std::vector<MenuView> views;
@@ -46,4 +46,3 @@ private:
 };
 }
 
-#endif

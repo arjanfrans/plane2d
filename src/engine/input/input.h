@@ -1,5 +1,4 @@
-#ifndef INPUT_INPUT_H
-#define INPUT_INPUT_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include "../engine.h"
@@ -7,6 +6,7 @@
 namespace pl {
 
 class Engine;
+
 class Input {
 
 public:
@@ -17,5 +17,3 @@ public:
 private:
 };
 }
-
-#endif

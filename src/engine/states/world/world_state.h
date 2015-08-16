@@ -1,5 +1,4 @@
-#ifndef WORLD_STATE_H
-#define WORLD_STATE_H
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -35,4 +34,3 @@ private:
 };
 }
 
-#endif

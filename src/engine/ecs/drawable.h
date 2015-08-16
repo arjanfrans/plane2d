@@ -2,9 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "components/view_component.h"
 
 namespace pl {
-class ViewComponent;
 
 class Drawable {
 

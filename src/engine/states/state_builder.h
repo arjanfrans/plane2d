@@ -8,12 +8,14 @@
 
 namespace pl {
 
-class Engine;
-
 class StateBuilder {
 
 public:
-    std::shared_ptr<MenuState> menuState(std::shared_ptr<Engine> engine);
-    std::shared_ptr<WorldState> worldState(std::shared_ptr<Engine> engine);
+    StateBuilder(std::shared_ptr<Engine> engine);
+    std::shared_ptr<MenuState> menuState();
+    std::shared_ptr<WorldState> worldState();
+
+private:
+    std::shared_ptr<Engine> engine;
 };
 }
