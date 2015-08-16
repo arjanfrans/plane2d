@@ -1,5 +1,6 @@
 #include "global_input.h"
 #include "../utils/logger.h"
+#include "../states/state.h"
 
 namespace pl {
 
@@ -22,7 +23,7 @@ bool GlobalInput::update(sf::Event event) {
 }
 
 void GlobalInput::onResize(sf::Event event) {
-    this->engine->peekState()->resizeWindow(event.size.width, event.size.height);
+    this->engine->currentState->resizeWindow(event.size.width, event.size.height);
     return;
 }
 
@@ -43,4 +44,3 @@ bool GlobalInput::keyInput(sf::Keyboard::Key code) {
     return false;
 }
 }
-

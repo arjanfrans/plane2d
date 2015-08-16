@@ -17,11 +17,13 @@ StateBuilder::StateBuilder(std::shared_ptr<Engine> engine) : engine{engine} {
 std::shared_ptr<MenuState> StateBuilder::menuState() {
     auto menuState = std::make_shared<MenuState>(this->engine);
     std::vector<MenuInput> inputs{MenuInput{menuState}};
+
     auto config = this->engine->config->get("menu");
     std::vector<MenuView> views{
         MenuView{menuState, config["virtualWidth"].as<float>(), config["virtualHeight"].as<float>()}};
     menuState->setInputs(inputs);
     menuState->setViews(views);
+
     return menuState;
 }
 
@@ -36,4 +38,3 @@ std::shared_ptr<WorldState> StateBuilder::worldState() {
     return worldState;
 }
 }
-

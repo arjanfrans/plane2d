@@ -1,4 +1,6 @@
 #include "world_state.h"
+#include "world_view.h"
+#include "world_input.h"
 
 namespace pl {
 

@@ -1,10 +1,10 @@
 #include "engine.h"
 #include "utils/logger.h"
+#include "states/state.h"
 #include "states/state_builder.h"
 #include "input/global_input.h"
 #include "ecs/entity_builder.h"
 #include "states/state_builder.h"
-#include "states/state.h"
 
 namespace pl {
 Engine::Engine(std::shared_ptr<Config> config) : config{config}, globalInput{nullptr}, entityBuilder{nullptr}, stateBuilder{nullptr} {
@@ -67,10 +67,10 @@ void Engine::loop() {
     while (this->window.isOpen()) {
         sf::Time elapsed = clock.restart();
         float dt = elapsed.asSeconds();
-        eventLoop(peekState());
-        if (peekState() != nullptr) {
+        eventLoop(currentState);
+        if (currentState != nullptr) {
             this->window.clear(sf::Color::Black);
-            peekState()->update(dt);
+            currentState->update(dt);
             this->window.display();
         }
     }
@@ -90,29 +90,22 @@ void Engine::eventLoop(std::shared_ptr<State> state) {
     return;
 }
 
-void Engine::pushState(std::shared_ptr<State> state) {
-    states.push(state);
+void Engine::addState(std::string name, std::shared_ptr<State> state) {
+    this->states.emplace(name, state);
     return;
 }
 
-void Engine::popState() {
-    states.pop();
+void Engine::removeState(std::string name) {
+    this->states.erase(name);
     return;
 }
 
-void Engine::changeState(std::shared_ptr<State> state) {
-    if (!this->states.empty()) {
-        popState();
+void Engine::changeState(std::string name) {
+    auto state = this->states.find(name);
+    if(state != this->states.end()) {
+        this->currentState = state->second; 
     }
-    pushState(move(state));
     return;
-}
-
-std::shared_ptr<State> Engine::peekState() {
-    if (this->states.empty()) {
-        return nullptr;
-    }
-    return this->states.top();
 }
 
 void Engine::setStateBuilder(std::unique_ptr<StateBuilder> builder) {

@@ -2,9 +2,11 @@
 #include "plane.h"
 
 void Plane::createStates() {
+    createGameState();
     auto stateBuilder = this->engine->getStateBuilder();
     auto menuState = stateBuilder.menuState();
-    this->engine->pushState(menuState);
+    this->engine->addState("menu", menuState);
+    this->engine->changeState("menu");
 }
 
 void Plane::createGameState() {
@@ -14,7 +16,7 @@ void Plane::createGameState() {
     // auto player = 
 
     // gameState->addEntity();
-    this->engine->pushState(gameState);
+    this->engine->addState("world", gameState);
 
 }
 

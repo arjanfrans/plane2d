@@ -1,4 +1,5 @@
 set(ENGINE_STATES_SOURCES
+    engine/states/state.cpp
     engine/states/world/world_state.cpp
     engine/states/menu/menu_state.cpp
     engine/states/state_builder.cpp
@@ -7,6 +8,5 @@ set(ENGINE_STATES_SOURCES
     engine/states/world/world_view.cpp
     engine/states/menu/menu_input.cpp
     engine/states/menu/menu_view.cpp
-    engine/states/state.cpp
     PARENT_SCOPE
 )

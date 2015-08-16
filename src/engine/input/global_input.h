@@ -2,10 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../engine.h"
 #include "input.h"
 
 namespace pl {
+
+class Engine;
 
 class GlobalInput : public Input {
 

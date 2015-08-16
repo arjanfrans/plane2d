@@ -7,8 +7,6 @@
 
 namespace pl {
 
-class Engine;
-
 class State {
 
 public:

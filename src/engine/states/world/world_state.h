@@ -4,10 +4,7 @@
 #include <vector>
 
 #include "../state.h"
-#include "../../input/input.h"
 #include "../../engine.h"
-#include "world_view.h"
-#include "world_input.h"
 #include "../../ecs/entity.h"
 
 namespace pl {

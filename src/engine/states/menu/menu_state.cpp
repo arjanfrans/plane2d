@@ -51,7 +51,7 @@ void MenuState::setSelectedItem(std::string key) {
 }
 
 void MenuState::onStart() {
-    this->engine->changeState(this->engine->peekState());
+    this->engine->changeState("world");
     return;
 };
 
