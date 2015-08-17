@@ -1,6 +1,7 @@
 #include "world_state.h"
 #include "world_view.h"
 #include "world_input.h"
+#include "../../ecs/controllable.h"
 
 namespace pl {
 
@@ -44,6 +45,9 @@ void WorldState::updateInput(sf::Event event) {
 }
 
 void WorldState::addEntity(std::unique_ptr<Entity> entity) {
+    if(dynamic_cast<Controllable*>(entity.get()) {
+
+    }   
     this->entities.push_back(std::move(entity));
 }
 }

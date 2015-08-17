@@ -10,6 +10,7 @@ void Plane::createGameState() {
     auto gameState = this->stateBuilder->worldState();
 
     auto player = this->entityBuilder->player();
+    gameState->addEntity(std::move(player));
 
     this->engine->addState("world", gameState);
 }

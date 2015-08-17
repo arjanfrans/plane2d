@@ -18,5 +18,6 @@ public:
 
 private:
     std::shared_ptr<WorldState> state;
+    bool keyInput(sf::Event event);
 };
 }
