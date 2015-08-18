@@ -12,11 +12,11 @@ include_directories(
     )
 
 add_subdirectory(engine)
+add_subdirectory(platformer)
 
 set(SOURCES 
     ${ENGINE_SOURCES}
-    plane.cpp 
-    main.cpp
+    ${PLATFORMER_SOURCES}
 )
 
 add_executable(${PROJECT_NAME}

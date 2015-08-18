@@ -7,6 +7,9 @@
 
 namespace pl {
 
-class Player : public MovableEntity, public Drawable, public Controllable {};
-// public Drawable,
+class Player : public virtual MovableEntity, public virtual Drawable, public virtual Controllable {
+
+public:
+    Player();
+};
 }

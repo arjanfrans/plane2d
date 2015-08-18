@@ -9,6 +9,7 @@ namespace pl {
 class Controllable {
 
 public:
+    Controllable();
     void setInputComponent(InputComponent inputComponent);
     const InputComponent &getInputComponent();
     bool updateInput(sf::Event event);

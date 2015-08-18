@@ -6,6 +6,8 @@
 #include "../state.h"
 #include "../../engine.h"
 #include "../../ecs/entity.h"
+#include "../../ecs/controllable.h"
+#include "../../ecs/entity_container.h"
 
 namespace pl {
 
@@ -22,7 +24,9 @@ public:
     void updateInput(sf::Event event);
     void resizeWindow(float width, float height);
     void addEntity(std::unique_ptr<Entity> entity);
-    std::vector<std::unique_ptr<Entity>> entities;
+    void setEntityContainer(std::unique_ptr<EntityContainer> entityContainer);
+    std::vector<Controllable*> controllables;
+    std::unique_ptr<EntityContainer> entityContainer;
 
 private:
     std::vector<WorldInput> inputs;

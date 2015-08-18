@@ -2,6 +2,9 @@
 
 namespace pl {
 
+Entity::Entity() {};
+
+
 void Entity::setSize(float width, float height) {
     this->size.x = width;
     this->size.y = height;
@@ -28,4 +31,5 @@ void Entity::setOrigin(float x, float y) {
 const sf::Vector2f &Entity::getOrigin() {
     return this->origin;
 }
+
 }

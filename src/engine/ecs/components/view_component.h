@@ -9,8 +9,6 @@ class ViewComponent {
 
 public:
     void setTexture(sf::Texture &texture);
-
-private:
     sf::Sprite sprite;
 };
 }

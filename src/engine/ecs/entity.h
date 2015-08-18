@@ -7,6 +7,7 @@ namespace pl {
 class Entity {
 
 public:
+    Entity();
     void setSize(float width, float height);
     const sf::Vector2f &getSize();
     void setPosition(float x, float y);

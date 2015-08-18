@@ -4,11 +4,13 @@
 
 namespace pl {
 
-WorldState::WorldState(std::shared_ptr<Engine> engine) : State{engine} {
+WorldState::WorldState(std::shared_ptr<Engine> engine)
+    : State{engine}, entityContainer{nullptr} {
 }
 
 void WorldState::update(const float dt) {
     updateViews();
+    this->entityContainer->update(dt);
     return;
 }
 void WorldState::setViews(std::vector<WorldView> views) {
@@ -18,6 +20,10 @@ void WorldState::setViews(std::vector<WorldView> views) {
 void WorldState::setInputs(std::vector<WorldInput> inputs) {
     this->inputs = std::move(inputs);
     return;
+}
+
+void WorldState::setEntityContainer(std::unique_ptr<EntityContainer> entityContainer) {
+    this->entityContainer = std::move(entityContainer);
 }
 
 void WorldState::resizeWindow(float width, float height) {
@@ -41,9 +47,5 @@ void WorldState::updateInput(sf::Event event) {
         input.update(event);
     }
     return;
-}
-
-void WorldState::addEntity(std::unique_ptr<Entity> entity) {
-    this->entities.push_back(std::move(entity));
 }
 }

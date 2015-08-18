@@ -1,7 +1,7 @@
-#include "plane.h"
+#include "platformer.h"
 
 int main() {
-    Plane game;
+    platformer::Platformer game;
     game.start();
     return EXIT_SUCCESS;
 }

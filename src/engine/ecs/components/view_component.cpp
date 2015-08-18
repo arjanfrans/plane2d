@@ -6,3 +6,4 @@ void ViewComponent::setTexture(sf::Texture &texture) {
     this->sprite.setTexture(texture);
 }
 }
+

@@ -11,6 +11,8 @@ bool WorldInput::update(sf::Event event) {
         default:
             return false;
     }
+
+    this->state->entityContainer->updateControllables(event);
 }
 
 }

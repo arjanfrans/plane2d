@@ -4,7 +4,7 @@
 #include "entity.h"
 
 namespace pl {
-class MovableEntity : public Entity {
+class MovableEntity : public virtual Entity {
 
 public:
     void move(float dt);

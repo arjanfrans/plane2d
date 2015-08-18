@@ -34,6 +34,7 @@ public:
     void changeFullscreen();
     void changeWindow(unsigned int width, unsigned int height, bool fullscreen);
     ResourceManager resources;
+
     void setStateBuilder(std::shared_ptr<StateBuilder> stateBuilder);
     void setEntityBuilder(std::shared_ptr<EntityBuilder> entityBuilder);
     std::shared_ptr<StateBuilder> getStateBuilder();
