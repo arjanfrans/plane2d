@@ -8,6 +8,7 @@ set(ENGINE_ECS_SOURCES
     engine/ecs/entity.cpp
     engine/ecs/movable_entity.cpp
     engine/ecs/entity_builder.cpp
+    engine/ecs/entity_container.cpp
     engine/ecs/player.cpp
     PARENT_SCOPE
 )

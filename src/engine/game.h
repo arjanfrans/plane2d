@@ -15,6 +15,7 @@ public:
     Game();
     std::shared_ptr<Config> config;
     void start();
+    void init();
     std::shared_ptr<Engine> engine;
     std::shared_ptr<StateBuilder> stateBuilder;
     std::shared_ptr<EntityBuilder> entityBuilder;

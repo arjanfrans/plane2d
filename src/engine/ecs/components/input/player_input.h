@@ -12,10 +12,10 @@ namespace pl {
 class PlayerInput : public InputComponent {
 
 public:
-    PlayerInput(Player &player);
+    PlayerInput(std::unique_ptr<Player> &player);
     bool checkInput(sf::Event event);
 
 private:
-    Player &player;
+    std::unique_ptr<Player> &player;
 };
 }

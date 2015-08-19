@@ -7,12 +7,9 @@ WorldInput::WorldInput(std::shared_ptr<WorldState> state) : Input(state->engine)
 }
 
 bool WorldInput::update(sf::Event event) {
-    switch (event.type) {
+     switch (event.type) {
         default:
             return false;
     }
-
-    this->state->entityContainer->updateControllables(event);
 }
-
 }

@@ -1,5 +1,6 @@
 #include "platformer.h"
 #include "entity_container.h"
+#include "../engine/utils/logger.h"
 
 namespace platformer {
 
@@ -10,10 +11,11 @@ void Platformer::createStates() {
 }
 
 void Platformer::createGameState() {
-    auto gameState = this->stateBuilder->worldState();
 
     auto player = this->entityBuilder->player();
-    gameState->setEntityContainer(std::unique_ptr<EntityContainer>{new EntityContainer()});
+    auto entityContainer = std::make_shared<EntityContainer>();
+    entityContainer->player = std::move(player);
+    auto gameState = this->stateBuilder->worldState(entityContainer);
 
     this->engine->addState("world", gameState);
 }

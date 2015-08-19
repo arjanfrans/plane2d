@@ -25,8 +25,8 @@ std::shared_ptr<MenuState> StateBuilder::menuState() {
     return menuState;
 }
 
-std::shared_ptr<WorldState> StateBuilder::worldState() {
-    auto worldState = std::make_shared<WorldState>(this->engine);
+std::shared_ptr<WorldState> StateBuilder::worldState(std::shared_ptr<EntityContainer> entityContainer) {
+    auto worldState = std::make_shared<WorldState>(this->engine, entityContainer);
     std::vector<WorldInput> inputs{WorldInput{worldState}};
     auto config = this->engine->config->get("game");
     std::vector<WorldView> views{

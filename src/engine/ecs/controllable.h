@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 #include "components/input_component.h"
@@ -10,11 +11,11 @@ class Controllable {
 
 public:
     Controllable();
-    void setInputComponent(InputComponent inputComponent);
+    void setInputComponent(std::unique_ptr<InputComponent> inputComponent);
     const InputComponent &getInputComponent();
     bool updateInput(sf::Event event);
 
 private:
-    InputComponent inputComponent;
+    std::unique_ptr<InputComponent> inputComponent;
 };
 }

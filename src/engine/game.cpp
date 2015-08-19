@@ -23,9 +23,13 @@ Game::Game() : engine{nullptr} {
     this->engine->stateBuilder = this->stateBuilder;
     LOG(INFO) << "Working";
 }
+
+void Game::init() {
+    createStates();
+}
+
 void Game::start() {
 
-    createStates();
     this->engine->loop();
     return;
 }

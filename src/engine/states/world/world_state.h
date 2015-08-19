@@ -17,16 +17,13 @@ class WorldInput;
 class WorldState : public State {
 
 public:
-    WorldState(std::shared_ptr<Engine> engine);
+    WorldState(std::shared_ptr<Engine> engine, std::shared_ptr<EntityContainer> entityContainer);
     void setInputs(std::vector<WorldInput> inputs);
     void setViews(std::vector<WorldView> view);
     void update(const float dt);
     void updateInput(sf::Event event);
     void resizeWindow(float width, float height);
-    void addEntity(std::unique_ptr<Entity> entity);
-    void setEntityContainer(std::unique_ptr<EntityContainer> entityContainer);
-    std::vector<Controllable*> controllables;
-    std::unique_ptr<EntityContainer> entityContainer;
+    std::shared_ptr<EntityContainer> entityContainer;
 
 private:
     std::vector<WorldInput> inputs;

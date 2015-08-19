@@ -1,16 +1,18 @@
 #include "world_state.h"
 #include "world_view.h"
 #include "world_input.h"
+#include "../../utils/logger.h"
 
 namespace pl {
 
-WorldState::WorldState(std::shared_ptr<Engine> engine)
-    : State{engine}, entityContainer{nullptr} {
+WorldState::WorldState(std::shared_ptr<Engine> engine, std::shared_ptr<EntityContainer> entityContainer)
+    : State{engine}, entityContainer{entityContainer} {
 }
 
 void WorldState::update(const float dt) {
     updateViews();
     this->entityContainer->update(dt);
+
     return;
 }
 void WorldState::setViews(std::vector<WorldView> views) {
@@ -20,10 +22,6 @@ void WorldState::setViews(std::vector<WorldView> views) {
 void WorldState::setInputs(std::vector<WorldInput> inputs) {
     this->inputs = std::move(inputs);
     return;
-}
-
-void WorldState::setEntityContainer(std::unique_ptr<EntityContainer> entityContainer) {
-    this->entityContainer = std::move(entityContainer);
 }
 
 void WorldState::resizeWindow(float width, float height) {
@@ -46,6 +44,8 @@ void WorldState::updateInput(sf::Event event) {
     for (auto &input : this->inputs) {
         input.update(event);
     }
+    this->entityContainer->updateControllables(event);
+
     return;
 }
 }
