@@ -2,6 +2,7 @@
 #include "player.h"
 #include "components/input/player_input.h"
 #include "components/view/player_view.h"
+#include "../utils/logger.h"
 
 namespace pl {
 
@@ -14,7 +15,8 @@ std::unique_ptr<Player> EntityBuilder::player() {
 
     // view.setTexture(this->engine->resources.texture("smiley.png"));
     // player->setViewComponent(view);
-    player->setInputComponent(std::unique_ptr<PlayerInput>{player});
+    // player->setInputComponent(std::unique_ptr<PlayerInput>{player});
+    LOG(INFO) << "Player created.";
     return player;
 }
 }

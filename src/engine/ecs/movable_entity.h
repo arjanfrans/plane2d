@@ -9,6 +9,7 @@ class MovableEntity : public virtual Entity {
 public:
     void move(float dt);
     void setVelocity(float x, float y);
+    void update(float dt);
     const sf::Vector2f &getVelocity();
 
 private:

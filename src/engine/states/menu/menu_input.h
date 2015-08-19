@@ -18,8 +18,8 @@ public:
 
 private:
     std::shared_ptr<MenuState> state;
-    bool keyInput(sf::Event);
-    bool mouseClick(sf::Event);
-    bool mouseMovement(sf::Event);
+    bool keyInput(sf::Event event);
+    bool mouseClick(sf::Event event);
+    bool mouseMovement(sf::Event event);
 };
 }
