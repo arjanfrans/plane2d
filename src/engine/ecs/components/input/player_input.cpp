@@ -3,7 +3,7 @@
 
 namespace pl {
 
-PlayerInput::PlayerInput(std::unique_ptr<Player> &player) : player{player} {
+PlayerInput::PlayerInput(std::shared_ptr<Player> player) : player{player} {
 }
 
 bool PlayerInput::checkInput(sf::Event event) {

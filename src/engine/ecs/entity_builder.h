@@ -11,7 +11,7 @@ class EntityBuilder {
 
 public:
     EntityBuilder(std::shared_ptr<Engine> engine);
-    std::unique_ptr<Player> player();
+    std::shared_ptr<Player> player();
 
 private:
     std::shared_ptr<Engine> engine;

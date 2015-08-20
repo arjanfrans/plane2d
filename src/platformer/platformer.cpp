@@ -14,7 +14,7 @@ void Platformer::createGameState() {
 
     auto player = this->entityBuilder->player();
     auto entityContainer = std::make_shared<EntityContainer>();
-    entityContainer->player = std::move(player);
+    entityContainer->player = player;
     auto gameState = this->stateBuilder->worldState(entityContainer);
 
     this->engine->addState("world", gameState);

@@ -12,6 +12,6 @@ public:
     void updateControllables(sf::Event event);
     void update(float dt);
     void draw(sf::RenderWindow &window);
-    std::unique_ptr<pl::Player> player;
+    std::shared_ptr<pl::Player> player;
 };
 }
