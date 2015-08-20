@@ -10,9 +10,9 @@ namespace pl {
 
 class PlayerView : public ViewComponent {
 public:
-    PlayerView(Player &player);
+    PlayerView(std::shared_ptr<Player> player);
 
 private:
-    Player &player;
+    std::shared_ptr<Player>  player;
 };
 }

@@ -37,6 +37,7 @@ void WorldState::updateViews() {
             view.draw(this->engine->window);
         }
     }
+    this->entityContainer->draw(this->engine->window);
     return;
 }
 

@@ -2,6 +2,6 @@
 
 namespace pl {
 
-PlayerView::PlayerView(Player &player) : player{player} {
+PlayerView::PlayerView(std::shared_ptr<Player> player) : player{player} {
 }
 }

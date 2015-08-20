@@ -25,9 +25,5 @@ void WorldView::createBackground() {
 void WorldView::draw(sf::RenderWindow &window) {
     window.setView(this->fixedView);
     window.draw(this->background);
-
-    // if(this->state->entityContainer != nullptr) {
-    //     this->state->entityContainer->draw(window);
-    // }
 }
 }

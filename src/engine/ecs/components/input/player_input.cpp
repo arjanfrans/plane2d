@@ -7,7 +7,6 @@ PlayerInput::PlayerInput(std::shared_ptr<Player> player) : player{player} {
 }
 
 bool PlayerInput::checkInput(sf::Event event) {
-    LOG(INFO) << "Updating playerInput.";
     if (event.type != sf::Event::KeyPressed) {
         return false;
     }

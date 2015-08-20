@@ -11,11 +11,11 @@ class Drawable {
 
 public:
     Drawable();
-    void setViewComponent(ViewComponent view);
-    ViewComponent &getViewComponent();
-    void updateView(sf::RenderWindow& window);
+    void setViewComponent(std::unique_ptr<ViewComponent> view);
+    const ViewComponent &getViewComponent();
+    void updateView(sf::RenderWindow &window);
 
 private:
-    ViewComponent view;
+    std::unique_ptr<ViewComponent> view;
 };
 }

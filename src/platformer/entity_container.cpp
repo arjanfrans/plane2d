@@ -7,6 +7,7 @@ void EntityContainer::update(float dt) {
 }
 
 void EntityContainer::draw(sf::RenderWindow &window) {
+    this->player->updateView(window);
 }
 
 void EntityContainer::updateControllables(sf::Event event) {
