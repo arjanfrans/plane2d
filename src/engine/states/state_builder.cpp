@@ -1,4 +1,5 @@
 #include <memory>
+#include <map>
 
 #include "state_builder.h"
 #include "menu/menu_input.h"
@@ -29,8 +30,10 @@ std::shared_ptr<WorldState> StateBuilder::worldState(std::shared_ptr<EntityConta
     auto worldState = std::make_shared<WorldState>(this->engine, entityContainer);
     std::vector<WorldInput> inputs{WorldInput{worldState}};
     auto config = this->engine->config->get("game");
-    std::vector<WorldView> views{
-        WorldView{worldState, config["virtualWidth"].as<float>(), config["virtualHeight"].as<float>()}};
+    std::map<std::string, WorldView> views{
+        {"world", WorldView{worldState, config["virtualWidth"].as<float>(),
+                            config["virtualHeight"].as<float>()}}};
+
     worldState->setInputs(inputs);
     worldState->setViews(views);
     return worldState;

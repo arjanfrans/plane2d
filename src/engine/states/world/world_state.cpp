@@ -15,10 +15,15 @@ void WorldState::update(const float dt) {
 
     return;
 }
-void WorldState::setViews(std::vector<WorldView> views) {
+void WorldState::setViews(std::map<std::string, WorldView> views) {
     this->views = std::move(views);
     return;
 }
+
+WorldView &WorldState::getView(std::string name) {
+    return this->views.at(name);
+}
+
 void WorldState::setInputs(std::vector<WorldInput> inputs) {
     this->inputs = std::move(inputs);
     return;
@@ -26,7 +31,7 @@ void WorldState::setInputs(std::vector<WorldInput> inputs) {
 
 void WorldState::resizeWindow(float width, float height) {
     for (auto &view : this->views) {
-        view.resize(width, height);
+        view.second.resize(width, height);
     }
     return;
 }
@@ -34,7 +39,7 @@ void WorldState::resizeWindow(float width, float height) {
 void WorldState::updateViews() {
     if (this->views.size() > 0) {
         for (auto &view : this->views) {
-            view.draw(this->engine->window);
+            view.second.draw(this->engine->window);
         }
     }
     this->entityContainer->draw(this->engine->window);
