@@ -2,6 +2,7 @@
 find_package(Boost 1.54.0 REQUIRED COMPONENTS filesystem regex)
 find_package(SFML 2 REQUIRED network graphics window audio system)
 find_package(YamlCpp REQUIRED)
+find_package(TmxParser REQUIRED)
 
 # directories for header inclusion
 include_directories(
@@ -9,7 +10,8 @@ include_directories(
 	${SFML_INCLUDE_DIR}
     ${YAMLCPP_INCLUDE_DIR}
     ${Boost_INCLUDE_DIR}
-    )
+    ${TMXPARSER_INCLUDE_DIR}
+)
 
 add_subdirectory(engine)
 add_subdirectory(platformer)
@@ -30,4 +32,5 @@ target_link_libraries(
     ${SFML_LIBRARIES}
     ${YAMLCPP_LIBRARY}
     ${Boost_LIBRARIES}
+    ${TMXPARSER_LIBRARIES}
 )
