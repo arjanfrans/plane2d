@@ -1,4 +1,4 @@
-sudo apt-get install -y libtinyxml2-dev 
+sudo apt-get install -y libtinyxml2-dev zlibc
 cd tmxparser 
 mkdir -p build
 cd build
