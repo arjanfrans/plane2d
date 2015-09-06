@@ -29,22 +29,22 @@ sf::Texture &ResourceManager::texture(std::string name) {
     this->textures.emplace(name, std::move(newTexture));
     return *this->textures.at(name).get();
 };
-
-Tmx::Map &ResourceManager::map(std::string name) {
-    auto map = this->maps.find(name);
-    if (map != this->maps.end()) {
-        return *map->second.get();
-    }
-
-    auto newMap = std::unique_ptr<Tmx::Map>{new Tmx::Map()};
-    newMap->ParseFile(CONFIG_PATH + "maps/" + name);
-    if (newMap->HasError()) {
-        LOG(ERROR) << "Unable to load tmx map: " + name;
-        LOG(ERROR) << newMap->GetErrorCode();
-        LOG(ERROR) << newMap->GetErrorText();
-    }
-
-    this->maps.emplace(name, std::move(newMap));
-    return *this->maps.at(name).get();
-}
+//
+// Tmx::Map &ResourceManager::map(std::string name) {
+//     auto map = this->maps.find(name);
+//     if (map != this->maps.end()) {
+//         return *map->second.get();
+//     }
+//
+//     auto newMap = std::unique_ptr<Tmx::Map>{new Tmx::Map()};
+//     newMap->ParseFile(CONFIG_PATH + "maps/" + name);
+//     if (newMap->HasError()) {
+//         LOG(ERROR) << "Unable to load tmx map: " + name;
+//         LOG(ERROR) << newMap->GetErrorCode();
+//         LOG(ERROR) << newMap->GetErrorText();
+//     }
+//
+//     this->maps.emplace(name, std::move(newMap));
+//     return *this->maps.at(name).get();
+// }
 }

@@ -39,6 +39,7 @@ flags = [
     '-x',
     'c++',
     '-I' + current_dir + '/dependencies/yaml-cpp/include',
+    '-I' + current_dir + '/dependencies/tmxparser/include',
     '-I/usr/local/include',
     '-std=c++11',
 ]

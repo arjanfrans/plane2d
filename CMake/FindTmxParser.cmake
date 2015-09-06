@@ -7,11 +7,19 @@
 # TMXPARSER_FOUND
 
 find_path(TMXPARSER_INCLUDE_DIR NAMES tmxparser/Tmx.h
-          DOC "The tmxparser include directory"
+    PATHS
+        ${PROJECT_SOURCE_DIR}/dependencies/tmxparser/include
+        /usr/local/include/
+        /usr/local/
+        /usr/
 )
 
 find_library(TMXPARSER_LIBRARY NAMES tmxparser
-          DOC "The tmxparser library"
+    PATHS
+        ${PROJECT_SOURCE_DIR}/dependencies/tmxparser
+        ${PROJECT_SOURCE_DIR}/dependencies/tmxparser/build
+        /usr/local
+        /usr
 )
 
 if(TMXPARSER_LIBRARY)

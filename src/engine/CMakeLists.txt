@@ -4,7 +4,7 @@ add_subdirectory(input)
 add_subdirectory(ui)
 
 set(ENGINE_SOURCES
-    engine/config.cpp
+    engine/config.cpp 
     engine/resource_manager.cpp
     ${ENGINE_INPUT_SOURCES}
     ${ENGINE_STATES_SOURCES}
