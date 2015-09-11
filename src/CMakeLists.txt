@@ -28,7 +28,7 @@ add_executable(${PROJECT_NAME}
 # link the executable to those libraries
 target_link_libraries(
     ${PROJECT_NAME}
-    ${TMXPARSER_LIBRARIES}
+    ${TMXPARSER_LIBRARY}
     ${OPENGL_LIBRARY}
     ${SFML_LIBRARIES}
     ${YAMLCPP_LIBRARY}
