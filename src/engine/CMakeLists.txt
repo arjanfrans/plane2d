@@ -6,6 +6,7 @@ add_subdirectory(ui)
 set(ENGINE_SOURCES
     engine/config.cpp 
     engine/resource_manager.cpp
+    engine/tile_map.cpp
     ${ENGINE_INPUT_SOURCES}
     ${ENGINE_STATES_SOURCES}
     ${ENGINE_ECS_SOURCES}
