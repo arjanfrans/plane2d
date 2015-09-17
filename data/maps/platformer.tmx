@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" nextobjectid="6">
- <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" tilecount="2">
-  <tile id="0">
-   <image width="32" height="32" source="../graphics/tiles/earth.png"/>
-  </tile>
-  <tile id="1">
-   <image width="32" height="32" source="../graphics/tiles/grass.png"/>
-  </tile>
+ <tileset firstgid="1" name="spritesheet" tilewidth="32" tileheight="32" tilecount="2">
+  <image source="../graphics/tiles/spritesheet-1.png" width="64" height="32"/>
  </tileset>
  <layer name="tiles" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJztw7ENAAAEADD8f7QHDGbapBEAAAAAAFxXyzkEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4pgG1vwAa
+   eJztw7ENAAAEADD8f7QHDAaJpU0aAQAAAABwr5ZzCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ8a3M8AGg==
   </data>
  </layer>
 </map>
