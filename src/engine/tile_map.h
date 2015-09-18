@@ -17,6 +17,7 @@ public:
     sf::VertexArray vertices;
 
 private:
-    void parseTileset(Tmx::Tileset &tmxTileset);
+    void parseTileset(const Tmx::Tileset &tmxTileset);
+    void parseTileLayer(const Tmx::TileLayer &tmxTileLayer);
 };
 }
