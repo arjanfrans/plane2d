@@ -1,8 +1,8 @@
 build
+release
 logs
 log
 bin
-
 
 # Compiled Object files
 *.slo
