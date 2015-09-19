@@ -5,6 +5,20 @@
 
 namespace pl {
 
+struct Tileset {
+    std::string imageSource;
+    int imageWidth;
+    int imageHeight;
+    int tileWidth;
+    int tileHeight;
+    std::vector<Tmx::Tile> tiles;
+};
+
+struct TileLayer {
+    int width;
+    int height;
+};
+
 class TileMap {
 
 public:
@@ -18,6 +32,6 @@ public:
 
 private:
     void parseTileset(const Tmx::Tileset &tmxTileset);
-    void parseTileLayer(const Tmx::TileLayer &tmxTileLayer);
+    void parseTileLayer(std::vector<Tileset> tilesets, const Tmx::TileLayer *tmxTileLayer);
 };
 }
