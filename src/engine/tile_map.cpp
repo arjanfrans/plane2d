@@ -105,6 +105,7 @@ void TileMap::parseTileLayer(std::vector<Tileset> tilesets, const Tmx::TileLayer
 }
 
 void TileMap::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    states.transform *= getTransform();
     states.texture = &this->tilesetTexture;
     target.draw(this->vertices, states);
 }

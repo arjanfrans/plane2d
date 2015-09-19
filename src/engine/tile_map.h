@@ -18,7 +18,7 @@ struct Tileset {
     std::vector<Tmx::Tile> tiles;
 };
 
-class TileMap : public sf::Drawable {
+class TileMap : public sf::Drawable, public sf::Transformable {
 
 public:
     TileMap(sf::Texture& tilesetTexture);

@@ -38,11 +38,11 @@ void WorldView::draw(sf::RenderWindow &window) {
     // Background
     window.setView(this->fixedView);
     window.draw(this->background);
-
-    // Foreground
+    window.draw(tileMap);
+    //
+    // // Foreground
     updateCamera();
     window.setView(this->dynamicView);
 
-    window.draw(tileMap);
 }
 }
