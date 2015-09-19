@@ -2,8 +2,8 @@
 
 namespace pl {
 
-WorldView::WorldView(std::shared_ptr<WorldState> state, float width, float height)
-    : View{width, height}, state{state}, cameraFollow{nullptr} {
+WorldView::WorldView(std::shared_ptr<WorldState> state, TileMap tileMap, float width, float height)
+    : View{width, height}, state{state}, cameraFollow{nullptr}, tileMap{tileMap} {
     this->fixedView = this->state->engine->window.getView();
     this->dynamicView = this->state->engine->window.getView();
     createBackground();
@@ -42,5 +42,7 @@ void WorldView::draw(sf::RenderWindow &window) {
     // Foreground
     updateCamera();
     window.setView(this->dynamicView);
+
+    window.draw(tileMap);
 }
 }

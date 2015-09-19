@@ -37,19 +37,17 @@ std::shared_ptr<WorldState> StateBuilder::worldState(std::shared_ptr<EntityConta
 
     auto config = this->engine->config->get("game");
 
+    auto& tmxMap = this->engine->resources.map("platformer.tmx");
+
+    TileMap map{this->engine->resources.texture("tiles/spritesheet-1.png")};
+    map.parseTmx(tmxMap);
+
     std::map<std::string, WorldView> views{
-        {"world", WorldView{worldState, config["virtualWidth"].as<float>(),
+        {"world", WorldView{worldState, map, config["virtualWidth"].as<float>(),
                             config["virtualHeight"].as<float>()}}};
 
     worldState->setInputs(inputs);
     worldState->setViews(views);
-    
-
-    auto& tmxMap = this->engine->resources.map("platformer.tmx");
-
-    TileMap map;
-    map.parseTmx(tmxMap);
-
 
     return worldState;
 }

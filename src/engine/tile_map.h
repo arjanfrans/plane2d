@@ -1,7 +1,11 @@
+#pragma once
+
 #include <memory>
+#include <vector>
 
 #include <SFML/Graphics.hpp>
 #include <tmxparser/Tmx.h>
+#include "engine.h"
 
 namespace pl {
 
@@ -14,23 +18,20 @@ struct Tileset {
     std::vector<Tmx::Tile> tiles;
 };
 
-struct TileLayer {
-    int width;
-    int height;
-};
-
-class TileMap {
+class TileMap : public sf::Drawable {
 
 public:
-    TileMap();
+    TileMap(sf::Texture& tilesetTexture);
     int width = 0;
     int height = 0;
     int tileWidth = 0;
     int tileHeight = 0;
     void parseTmx(Tmx::Map &tmxMap);
     sf::VertexArray vertices;
+    sf::Texture &tilesetTexture;
 
 private:
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const; 
     void parseTileset(const Tmx::Tileset &tmxTileset);
     void parseTileLayer(std::vector<Tileset> tilesets, const Tmx::TileLayer *tmxTileLayer);
 };

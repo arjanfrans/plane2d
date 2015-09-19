@@ -1,19 +1,18 @@
 #include <string>
-#include <memory>
-#include <vector>
 #include "tile_map.h"
 #include "utils/logger.h"
 
 namespace pl {
 
-TileMap::TileMap(){};
+TileMap::TileMap(sf::Texture& tilesetTexture) : tilesetTexture{tilesetTexture} {
+};
 
 void TileMap::parseTmx(Tmx::Map &tmxMap) {
+
     this->width = tmxMap.GetWidth();
     this->height = tmxMap.GetHeight();
     this->tileWidth = tmxMap.GetTileWidth();
     this->tileHeight = tmxMap.GetTileHeight();
-
     LOG(INFO) << "Number of tilesets: " + std::to_string(tmxMap.GetNumTilesets());
 
     std::vector<Tileset> tilesets;
@@ -103,5 +102,10 @@ void TileMap::parseTileLayer(std::vector<Tileset> tilesets, const Tmx::TileLayer
         }
     }
     LOG(INFO) << "Out of loop";
+}
+
+void TileMap::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    states.texture = &this->tilesetTexture;
+    target.draw(this->vertices, states);
 }
 }
