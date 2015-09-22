@@ -1,3 +1,4 @@
+# add_subdirectory(utils/json)
 add_subdirectory(utils/tmxparser)
 
 add_subdirectory(states)
@@ -6,6 +7,7 @@ add_subdirectory(input)
 add_subdirectory(ui)
 
 set(ENGINE_SOURCES
+    # ${ENGINE_UTILS_JSON_SOURCES}
     ${ENGINE_UTILS_TMXPARSER_SOURCES}
     engine/config.cpp 
     engine/resource_manager.cpp
