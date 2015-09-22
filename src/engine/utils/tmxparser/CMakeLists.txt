@@ -1,0 +1,21 @@
+set(ENGINE_UTILS_TMXPARSER_SOURCES
+    engine/utils/tmxparser/base64/base64.cpp
+    engine/utils/tmxparser/TmxMap.cpp
+    engine/utils/tmxparser/TmxTileset.cpp
+    engine/utils/tmxparser/TmxTerrainArray.cpp
+    engine/utils/tmxparser/TmxTerrain.cpp
+    engine/utils/tmxparser/TmxTile.cpp
+    engine/utils/tmxparser/TmxTileOffset.cpp
+    engine/utils/tmxparser/TmxImage.cpp
+    engine/utils/tmxparser/TmxLayer.cpp
+    engine/utils/tmxparser/TmxTileLayer.cpp
+    engine/utils/tmxparser/TmxObject.cpp
+    engine/utils/tmxparser/TmxObjectGroup.cpp
+    engine/utils/tmxparser/TmxEllipse.cpp
+    engine/utils/tmxparser/TmxPolygon.cpp
+    engine/utils/tmxparser/TmxPolyline.cpp
+    engine/utils/tmxparser/TmxPropertySet.cpp
+    engine/utils/tmxparser/TmxUtil.cpp
+    engine/utils/tmxparser/TmxImageLayer.cpp
+    PARENT_SCOPE
+)

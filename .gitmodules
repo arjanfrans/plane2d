@@ -4,6 +4,3 @@
 [submodule "dependencies/yaml-cpp"]
 	path = dependencies/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp
-[submodule "dependencies/tmxparser"]
-	path = dependencies/tmxparser
-	url = https://github.com/andrewrk/tmxparser
